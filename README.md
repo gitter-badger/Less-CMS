@@ -1,2 +1,1 @@
-# CherryPie-Engine
-CPEngine - Beta source
+# CPEngine
