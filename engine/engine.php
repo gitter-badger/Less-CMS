@@ -33,7 +33,7 @@ foreach($dir as $file)
 	}
 }
 
-if(!isset($_GET))
+if(!$_GET)
 {
 	$siteTitle = $config->title;	
 	$module = 'main';
@@ -86,8 +86,11 @@ else
 					$siteTitle = $title . ' - ' . $config->title;	
 					$module = $action;
 				}
-				$core->mess($lang['error'], $lang['404']);
-				$siteTitle = $lang['error'] . ' - ' . $config->title;
+				else
+				{
+					$core->mess($lang['error'], $lang['404']);
+					$siteTitle = $lang['error'] . ' - ' . $config->title;
+				}
 			}
 			
 		break;
