@@ -1,2 +1,2 @@
-</php
+<?php
 //Please stand by
