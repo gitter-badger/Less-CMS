@@ -242,69 +242,6 @@ class admin
 	{
 		return (object)array("error" => $reason);
 	}
-		
-	function api($request)
-	{
-		$init = curl_init();
-		curl_setopt_array($init, array(
-			CURLOPT_URL => "http://api.codeburger.it/?method={$request['method']}&action={$request['action']}&key={$this->lkey}&domain=" . $this->server,
-			CURLOPT_HEADER => 0,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_POST => false
-		));
-		
-		$response = curl_exec($init);
-		curl_close($init);
-		
-		if($response)
-		{
-			return json_decode($response);
-		}
-		return $this->_error('svunav');;	
-	}
-	
-	function encode($str)
-	{
-		global $config;
-		
-		if(empty($config['lkey']))
-		{
-			$passw = 'l8xZZV6AZqVoF91XM7';
-		}
-		else
-		{
-			$passw = $config['lkey'];
-		}
-		$salt = "Dn8*#2n!9j";
-		$len = strlen($str);
-		$gamma = '';
-		$n = $len>100 ? 8 : 2;
-		while( strlen($gamma)<$len )
-		{
-			$gamma .= substr(pack('H*', sha1($passw.$gamma.$salt)), 0, $n);
-		}
-		return base64_encode($str^$gamma);
-	}
-	
-	function getFile($request)
-	{
-		$archive = @fopen($_SERVER['DOCUMENT_ROOT'] . '/uploads/temp/' . $request['extension'] . '.zip', "w");
-		$init = curl_init();
-		curl_setopt_array($init, array(
-			CURLOPT_URL => "http://api.codeburger.it/?method={$request['method']}&action={$request['action']}&key={$this->lkey}&domain={$this->server}&extension=" . $request['extension'],
-			CURLOPT_HEADER => 0,
-			CURLOPT_FILE => $archive
-		));
-		$return = curl_exec($init);
-		$json = (object)json_decode($return);
-		if($json->error)
-		{
-			return $json;
-		}
-			return true;
-			
-		curl_close($init);		
-	}
 	
 	function unzip($archive, $dest_dir, $files='')
 	{	
