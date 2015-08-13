@@ -42,17 +42,17 @@ class engine
 	
 	function addSkey($name, $value)
 	{
-    session_start();
-    $_SESSION[$name] = $value;
-    session_write_close();
+		session_start();
+		$_SESSION[$name] = $value;
+		session_write_close();
 		return true;
 	}
 	
 	function rmSkey($name)
 	{
-    session_start();
+		session_start();
 		unset($_SESSION[$name]);
-    session_write_close();
+		session_write_close();
 		return true;
 	}
 	
