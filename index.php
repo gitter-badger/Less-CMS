@@ -19,7 +19,6 @@ define ('ENGINE', ROOT . '/engine/');
 define ('CONFIG', ENGINE . 'confs/');
 define ('CORE', ENGINE . 'core/');
 define ('ERROR', ENGINE . 'errors.php');
-date_default_timezone_set('Europe/Rome');
 session_start();
 
 $idmember = $_SESSION['member_id'];

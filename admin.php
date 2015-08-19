@@ -20,7 +20,6 @@ define ( 'CONFIG', ENGINE . 'confs/' );
 define ( 'CORE', ENGINE . 'core/' );
 define ( 'ERROR', ENGINE . 'errors.php' );
 define ( 'ADMIN', ENGINE . 'admin/' );
-date_default_timezone_set('Europe/Rome');
 
 session_start();
 
@@ -63,7 +62,7 @@ if(!$allert)
 		{
 			$tpl->load ( 'login.tpl' );
 		}
-	
+
 		$tpl->set ( '{title}', $siteTitle );
 		$tpl->set ( '{lang}', $language->getData()->code );
 		$tpl->set ( '{langs_list}', $language->makeList() );
