@@ -1,5 +1,5 @@
 <?php
-if (!defined('l8xZZV6AZqVoF91XM7')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php"; exit;}
+if (!defined('{security_code}')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php"; exit;}
 
 class engine
 {
@@ -10,14 +10,14 @@ class engine
 			$in = (array)$in;
 		}
 		$blackList = array ("\x60","\t","\n","\r","\\","В¬","--","GROUP","--%","UNION","","eval","INTO","OUTFILE","LOAD_FILE","SELECT","-1"," AND ","information_schema","columns","select" ,"null," ,"OR ",".ppp",'</script>','<script>','</html>','<html>','</body>','<body>','</head>','<head>');
-		
+
 		if(is_array($in))
 		{
 			foreach($in as $key => $value)
 			{
 				if(is_array($value))
 				{
-					$out[$key] = self::clean($value); 
+					$out[$key] = self::clean($value);
 				}
 				else
 				{
@@ -29,14 +29,14 @@ class engine
 		{
 			$out = str_replace($blackList, '', $in);
 		}
-		
+
 		if($object)
 		{
 			return (object)$out;
 		}
 		return $out;
 	}
-	
+
 	function signIn($name, $value)
 	{
         session_start();
@@ -44,7 +44,7 @@ class engine
         session_write_close();
 		return true;
 	}
-	
+
 	function signOut($name)
 	{
         session_start();
@@ -52,7 +52,7 @@ class engine
         session_write_close();
 		return true;
 	}
-	
+
 	function load($data)
 	{
 		$data = basename($data, ".php");
@@ -62,14 +62,14 @@ class engine
 		}
 		return $this->_error();
 	}
-	
+
 	function encode($str)
 	{
 		global $config;
-		
+
 		if(empty($config->lkey))
 		{
-			$passw = 'l8xZZV6AZqVoF91XM7';
+			$passw = '{security_code}';
 		}
 		else
 		{
@@ -85,23 +85,23 @@ class engine
 		}
 		return base64_encode($str^$gamma);
 	}
-	
+
 	function getMs($data)
 	{
 		$date = new DateTime($data, new DateTimeZone('Europe/Berlin'));
 		return $date->format('U');
 	}
-	
+
 	function random_string($length, $chartypes)
 	{
-		
+
 	   $chartypes_array=explode(",", $chartypes);
 	   $lower = 'abcdefghijklmnopqrstuvwxyz';
 	   $upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	   $numbers = '1234567890';
 	   $special = '^@*+-+%()!?';
 	   $chars = "";
-	   
+
 	   if(in_array('all', $chartypes_array))
 	   {
 			 $chars = $lower.$upper.$numbers.$special;
@@ -117,40 +117,40 @@ class engine
 		  if(in_array('special', $chartypes_array))
 				  $chars .= $special;
 	   }
-	   
+
 	   $chars_length = (strlen($chars) - 1);
-	   
+
 	   $string = $chars{rand(0, $chars_length)};
-	   
+
 	   for ($i = 1; $i < $length; $i = strlen($string))
 	   {
 	   $random = $chars{rand(0, $chars_length)};
-	   
+
 	   if ($random != $string{$i - 1}) $string .= $random;
 	   }
-	   
+
 	   return $string;
 	}
-	
+
 	function showExtension($file)
 	{
 		return pathinfo($file, PATHINFO_EXTENSION);
 	}
-	
+
 	function paginator($rows, $current, $per, $link)
 	{
 		$pages = round($rows / $per, 0);
 		$backward = $current - 1;
 		$forward = $current + 1;
 		$last = $pages - 1;
-		
+
 		for($i=1; $i<=$num; $i++)
 		{
 			if($i > 1)
 			{
 				$bw = $link.$backward;
 			}
-			
+
 			if($current == 1)
 			{
 				$back = '<li><a><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>';
@@ -159,7 +159,7 @@ class engine
 			{
 				$back = '<li><a href="'.$bw.'"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>';
 			}
-			
+
 			if($i == $page)
 			{
 				$pages .= "<li class=\"active\"><a>{$init}{$i}</a></li>";
@@ -168,7 +168,7 @@ class engine
 			{
 				$pages .= "<li><a href=\"{$pre_link}{$prepage}'\">{$init}{$i}</a></li>";
 			}
-			
+
 			if($i <= $last)
 			{
 				$forw = "<li><a href=\"{$pre_link}{$foward}\"><span aria-hidden=\"true\">»</span><span class=\"sr-only\">Next</span></a></li>";
@@ -203,7 +203,7 @@ class connection
         if($result) return $result;
 		return $this->_error();
 	}
-	
+
 	function cGET($url, $params, $parse = true)
 	{
         $curl = curl_init();
@@ -228,45 +228,25 @@ class admin
 {
 	protected $lkey;
 	protected $server;
-	
+
 	function __construct($key)
 	{
 		$this->lkey = $key;
 		$this->server = $_SERVER['SERVER_NAME'];
 	}
-	
+
 	public function _error($reason)
 	{
 		return (object)array("error" => $reason);
 	}
-		
-	function api($request)
-	{
-		$init = curl_init();
-		curl_setopt_array($init, array(
-			CURLOPT_URL => "http://api.codeburger.it/?method={$request['method']}&action={$request['action']}&key={$this->lkey}&domain=" . $this->server,
-			CURLOPT_HEADER => 0,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_POST => false
-		));
-		
-		$response = curl_exec($init);
-		curl_close($init);
-		
-		if($response)
-		{
-			return json_decode($response);
-		}
-		return $this->_error('svunav');;	
-	}
-	
+
 	function encode($str)
 	{
 		global $config;
-		
+
 		if(empty($config['lkey']))
 		{
-			$passw = 'l8xZZV6AZqVoF91XM7';
+			$passw = '{security_code}';
 		}
 		else
 		{
@@ -282,7 +262,7 @@ class admin
 		}
 		return base64_encode($str^$gamma);
 	}
-	
+
 	function getFile($request)
 	{
 		$archive = @fopen($_SERVER['DOCUMENT_ROOT'] . '/uploads/temp/' . $request['extension'] . '.zip', "w");
@@ -299,12 +279,12 @@ class admin
 			return $json;
 		}
 			return true;
-			
-		curl_close($init);		
+
+		curl_close($init);
 	}
-	
+
 	function unzip($archive, $dest_dir, $files='')
-	{	
+	{
 		$zip = new ZipArchive;
 		if ($zip->open($archive))
 		{
@@ -314,12 +294,12 @@ class admin
 			}
 			else
 			{
-				$zip->extractTo($dest_dir, $files);					
+				$zip->extractTo($dest_dir, $files);
 			}
 			$zip->close();
-			return true;				
+			return true;
 		}
-		return $this->_error();		
+		return $this->_error();
 	}
 	function translit($input, $param)
 	{
@@ -331,7 +311,7 @@ class admin
 		}
 		return str_replace($arr_rus, $arr_eng, mb_strtolower($input));
 	}
-	
+
 	function perms($file, $perm = 644)
 	{
 		if(substr(sprintf('%o', fileperms($file)), -3) != $perm)

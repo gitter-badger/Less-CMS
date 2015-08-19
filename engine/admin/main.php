@@ -1,5 +1,5 @@
 <?php
-if (!defined('l8xZZV6AZqVoF91XM7')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php"; exit;}
+if (!defined('{security_code}')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php"; exit;}
 
 require_once ENGINE . 'core/core.php';
 require_once CORE 	. 'lib.php';
