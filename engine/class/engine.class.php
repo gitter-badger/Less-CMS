@@ -3,9 +3,9 @@ if (!defined('{security_code}')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/er
 
 class engine
 {
-	function clean($in, $preconvert=false, $object=false)
+	function clean($in, $object=false)
 	{
-		if($preconvert)
+		if(is_object($in))
 		{
 			$in = (array)$in;
 		}
@@ -29,27 +29,44 @@ class engine
 		{
 			$out = str_replace($blackList, '', $in);
 		}
+<<<<<<< HEAD
 
+=======
+		if(empty($out))
+		{
+			return false;
+		}
+>>>>>>> origin/master
 		if($object)
 		{
 			return (object)$out;
 		}
 		return $out;
 	}
+<<<<<<< HEAD
 
 	function signIn($name, $value)
+=======
+	
+	function addSkey($name, $value)
+>>>>>>> origin/master
 	{
-        session_start();
-        $_SESSION[$name] = $value;
-        session_write_close();
+		session_start();
+		$_SESSION[$name] = $value;
+		session_write_close();
 		return true;
 	}
+<<<<<<< HEAD
 
 	function signOut($name)
+=======
+	
+	function rmSkey($name)
+>>>>>>> origin/master
 	{
-        session_start();
+		session_start();
 		unset($_SESSION[$name]);
-        session_write_close();
+		session_write_close();
 		return true;
 	}
 
@@ -88,7 +105,7 @@ class engine
 
 	function getMs($data)
 	{
-		$date = new DateTime($data, new DateTimeZone('Europe/Berlin'));
+		$date = new DateTime($data);
 		return $date->format('U');
 	}
 
@@ -239,6 +256,7 @@ class admin
 	{
 		return (object)array("error" => $reason);
 	}
+<<<<<<< HEAD
 
 	function encode($str)
 	{
@@ -283,6 +301,9 @@ class admin
 		curl_close($init);
 	}
 
+=======
+	
+>>>>>>> origin/master
 	function unzip($archive, $dest_dir, $files='')
 	{
 		$zip = new ZipArchive;
