@@ -33,27 +33,27 @@ abstract class dbConfig
 	protected $db_id;
 	protected $query_id;
 	protected $erorrs;
- 
+
     public function error($data)
 	{
         $title = 'MySQL Error';
 		$err_type = "MySQL Error " . $data;
-			
+
 		require_once ERROR;
-		
+
 		exit();
     }
- 
+
     public function success()
 	{
         return (object)'success';
     }
- 
+
     public function warning()
 	{
         return (object)'warning';
     }
- 
+
     public function sqlError($query, $message)
 	{
 		if($query)
@@ -63,27 +63,27 @@ abstract class dbConfig
 		$query = htmlspecialchars($query, ENT_QUOTES, 'ISO-8859');
 		$message = htmlspecialchars($message, ENT_QUOTES, 'ISO-8859');
 		$trace = debug_backtrace();
-		
+
 		$level = 0;
 		if ($trace[1]['function'] == "query" ) $level = 2;
 		if ($trace[2]['function'] == "super_query" ) $level = 3;
 
 		$trace[$level]['file'] = str_replace(ROOT, "", $trace[$level]['file']);
-		
+
 		#print_r($trace);
 		$title = 'MySQL Error';
 		$err_type = "MySQL Error ({$this->db_id->errno})nn{$query}n{$message}. nn In: {$trace[$level]['file']} on line: {$trace[$level]['line']}";
-			
+
 		if(!include $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php")
 		{
 			$mysql_err['title'] = $title;
 			$mysql_err['err'] = $err_type;
 			echo json_encode($mysql_err);
 		}
-		
+
 		exit();
     }
-	
+
 }
 
 spl_autoload_register(function ($name)
@@ -94,26 +94,26 @@ spl_autoload_register(function ($name)
 $mysql = new mysql();
 /*Databases END*/
 
-class Core
+class Core extends Functions
 {
 	var $action;
 	var $lang;
 	var $member;
 	var $config;
-	
+
 	public function __construct()
 	{
 		global $config;
 		global $lang;
 		global $member;
-		
+
 		$this->db = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_NAME);
 		$this->db->set_charset("utf8");
-		
+
 		$this->config = $config;
 		$this->lang = $lang;
 		$this->member = $member;
-		
+
 		if (!empty($arguments))
         {
             foreach ($arguments as $property => $argument)
@@ -122,7 +122,7 @@ class Core
             }
         }
 	}
-	
+
 	public function __call($method, $arguments)
 	{
         $arguments = array_merge(array("MySQL Object" => $this), $arguments);
@@ -135,7 +135,7 @@ class Core
             throw new Exception("Fatal error: Call to undefined method MySQL Object::{$method}()");
         }
     }
-	
+
 	public function notif($type='', $mess)
 	{
 		switch($type)
@@ -144,58 +144,58 @@ class Core
 				$icon = 'exclamation';
 				$nType = 'error';
 			break;
-			
+
 			case notif:
 				$icon = 'info';
 				$nType = 'notif';
 			break;
-			
+
 			case db:
 				$icon = 'database';
 				$nType = 'database';
 			break;
-			
+
 			case license:
 				$icon = 'key';
 				$nType = 'license';
 			break;
-			
+
 			case systm:
 				$icon = 'hand-peace-o';
-				$nType = 'system';				
+				$nType = 'system';
 			break;
-			
+
 			default:
 				$icon = 'asterisk';
-				$nType = '';				
+				$nType = '';
 			break;
 		}
-		
+
 		return '<li><div><i class="fa fa-' . $icon . '"></i></div><div>
 		<h4>' . $this->lang[$nType] . '</h4>
 		' . $mess . '
 		</div></li>';
 	}
-	
+
 	public function mess($title, $text)
 	{
 		global $tpl;
 		global $lang;
 		global $member;
 		global $config;
-		
+
 		$title = $title;
-		
+
 		if (!class_exists('template')){return false;}
-				
+
 		$tpl->load( 'mess.tpl' );
-		
+
 		$tpl->set( '{title}', $title );
 		$tpl->set( '{text}', $text );
-		
+
 		$tpl->compile( 'info' );
 	}
-	
+
 	public function load($data)
 	{
 		$data = basename($data, ".php");
@@ -205,14 +205,14 @@ class Core
 		}
 		return false;
 	}
-	
+
 	public function headers($name,$value)
 	{
 		return "<meta name=\"{$name}\" content=\"{$value}\">";
 	}
-	
+
 	public function setUser()
-	{		
+	{
 		mysql::select("members","id = '{$_SESSION['member_id']}'");
 		$member = mysql::getObject();
 		mysql::free();

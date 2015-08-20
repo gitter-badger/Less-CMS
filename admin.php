@@ -12,7 +12,7 @@ else
 @ini_set ( 'display_errors', true );
 @ini_set ( 'html_errors', false );
 
-define ( 'l8xZZV6AZqVoF91XM7', true );
+define ( '{security_code}', true );
 define ('AREA', 'adminSide');
 define ( 'ROOT', dirname ( __FILE__ ) );
 define ( 'ENGINE', ROOT . '/engine/' );
