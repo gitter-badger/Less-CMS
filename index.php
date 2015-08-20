@@ -12,7 +12,7 @@ else
 @ini_set ('display_errors', true);
 @ini_set ('html_errors', false);
 
-define ('{security_code}', true);
+define ('l8xZZV6AZqVoF91XM7', true);
 define ('AREA', 'frontSide');
 define ('ROOT', dirname(__FILE__));
 define ('ENGINE', ROOT . '/engine/');
@@ -31,8 +31,10 @@ if(!is_null($config->scalar))
 	exit;
 }
 
+
+include_once ENGINE . "class/functions.class.php";
+$_GET = $functions->clean($_GET);
 include_once ENGINE . "class/engine.class.php";
-$_GET = $engine->clean($_GET);
 include_once ENGINE . "engine.php";
 
 if(!$_POST['AJAX'])

@@ -12,7 +12,7 @@ else
 @ini_set ( 'display_errors', true );
 @ini_set ( 'html_errors', false );
 
-define ( '{security_code}', true );
+define ( 'l8xZZV6AZqVoF91XM7', true );
 define ('AREA', 'adminSide');
 define ( 'ROOT', dirname ( __FILE__ ) );
 define ( 'ENGINE', ROOT . '/engine/' );
@@ -20,7 +20,6 @@ define ( 'CONFIG', ENGINE . 'confs/' );
 define ( 'CORE', ENGINE . 'core/' );
 define ( 'ERROR', ENGINE . 'errors.php' );
 define ( 'ADMIN', ENGINE . 'admin/' );
-
 session_start();
 
 $idmember = $_SESSION['member_id'];
@@ -36,8 +35,10 @@ else
 {
 	$config = (object)$config;
 }
+include_once ENGINE . "class/functions.class.php";
+$_GET = $functions->clean($_GET);
 include_once ENGINE . "class/engine.class.php";
-$_GET = $engine->clean($_GET);
+include_once ENGINE . "class/admin.class.php";
 include_once ADMIN . 'main.php';
 
 if(!$allert)
@@ -73,6 +74,15 @@ if(!$allert)
 		$tpl->compile ( 'main' );
 		echo $tpl->result['main'];
 	}
+
+  if(isset($_POST['logon']))
+  {
+    if($member->password == $engine->encode($_POST['logon']))
+    {
+			$engine->addSkey('social','false');
+      echo '{"status":"passed"}';
+    }
+  }
 }
 elseif($allert)
 {

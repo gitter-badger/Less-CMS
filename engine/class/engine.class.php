@@ -1,73 +1,44 @@
 <?php
-if (!defined('{security_code}')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php"; exit;}
+if (!defined('l8xZZV6AZqVoF91XM7')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php"; exit;}
 
-class engine
+class Engine
 {
-	function clean($in, $object=false)
+	var $config;
+	var $language;
+	var $member;
+
+	public function __construct()
 	{
-		if(is_object($in))
-		{
-			$in = (array)$in;
-		}
-		$blackList = array ("\x60","\t","\n","\r","\\","В¬","--","GROUP","--%","UNION","","eval","INTO","OUTFILE","LOAD_FILE","SELECT","-1"," AND ","information_schema","columns","select" ,"null," ,"OR ",".ppp",'</script>','<script>','</html>','<html>','</body>','<body>','</head>','<head>');
-
-		if(is_array($in))
-		{
-			foreach($in as $key => $value)
-			{
-				if(is_array($value))
-				{
-					$out[$key] = self::clean($value);
-				}
-				else
-				{
-					$out[$key] = str_replace($blackList, '', $value);
-				}
-			}
-		}
-		else
-		{
-			$out = str_replace($blackList, '', $in);
-		}
-<<<<<<< HEAD
-
-=======
-		if(empty($out))
-		{
-			return false;
-		}
->>>>>>> origin/master
-		if($object)
-		{
-			return (object)$out;
-		}
-		return $out;
+		$this->config = $GLOBALS['config'];
+		$this->language = $GLOBALS['language'];
+		$this->member = $GLOBALS['member'];
 	}
-<<<<<<< HEAD
 
-	function signIn($name, $value)
-=======
-	
+	public function encode($str)
+  {
+    return eval(base64_decode('JHBhc3N3ID0gJ2w4eFpaVjZBWnFWb0Y5MVhNNyc7CmlmKCFlbXB0eSgkdGhpcy0+Y29uZmlnLT5sa2V5KSl7JHBhc3N3ID0gJHRoaXMtPmNvbmZpZy0+bGtleTt9CiRzYWx0ID0gIkRuOCojMm4hOWoiOwokbGVuID0gc3RybGVuKCRzdHIpOwokZ2FtbWEgPSAnJzsKJG4gPSAkbGVuPjEwMCA/IDggOiAyOwp3aGlsZSggc3RybGVuKCRnYW1tYSk8JGxlbiApCnsKICAkZ2FtbWEgLj0gc3Vic3RyKHBhY2soJ0gqJywgc2hhMSgkcGFzc3cuJGdhbW1hLiRzYWx0KSksIDAsICRuKTsKfQpyZXR1cm4gYmFzZTY0X2VuY29kZSgkc3RyXiRnYW1tYSk7Cg=='));
+  }
+
 	function addSkey($name, $value)
->>>>>>> origin/master
 	{
-		session_start();
-		$_SESSION[$name] = $value;
-		session_write_close();
-		return true;
+			session_start();
+			$_SESSION[$name] = $value;
+			session_write_close();
+			return true;
 	}
-<<<<<<< HEAD
 
-	function signOut($name)
-=======
-	
 	function rmSkey($name)
->>>>>>> origin/master
 	{
-		session_start();
-		unset($_SESSION[$name]);
-		session_write_close();
-		return true;
+			session_start();
+			unset($_SESSION[$name]);
+			session_write_close();
+			return true;
+	}
+
+	function getMs($data)
+	{
+			$date = new DateTime($data);
+			return $date->format('U');
 	}
 
 	function load($data)
@@ -78,35 +49,6 @@ class engine
 			return $data;
 		}
 		return $this->_error();
-	}
-
-	function encode($str)
-	{
-		global $config;
-
-		if(empty($config->lkey))
-		{
-			$passw = '{security_code}';
-		}
-		else
-		{
-			$passw = $config->lkey;
-		}
-		$salt = "Dn8*#2n!9j";
-		$len = strlen($str);
-		$gamma = '';
-		$n = $len>100 ? 8 : 2;
-		while( strlen($gamma)<$len )
-		{
-			$gamma .= substr(pack('H*', sha1($passw.$gamma.$salt)), 0, $n);
-		}
-		return base64_encode($str^$gamma);
-	}
-
-	function getMs($data)
-	{
-		$date = new DateTime($data);
-		return $date->format('U');
 	}
 
 	function random_string($length, $chartypes)
@@ -197,113 +139,7 @@ class engine
 		}
 		return "<ul class=\"pagination\">{$back}{$pages}{$forw}</ul>";
 	}
-}
-$engine = new engine();
 
-class connection
-{
-	function cPOST($url, $params, $parse = true)
-	{
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, urldecode(http_build_query($params)));
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        $result = curl_exec($curl);
-        curl_close($curl);
-
-        if ($parse)
-		{
-            $result = json_decode($result, true);
-        }
-        if($result) return $result;
-		return $this->_error();
-	}
-
-	function cGET($url, $params, $parse = true)
-	{
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url . '?' . urldecode(http_build_query($params)));
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        $result = curl_exec($curl);
-        curl_close($curl);
-
-        if ($parse)
-		{
-            $result = json_decode($result, true);
-        }
-
-        if($result) return $result;
-		return $this->_error();
-	}
-}
-$connect = new connection();
-
-class admin
-{
-	protected $lkey;
-	protected $server;
-
-	function __construct($key)
-	{
-		$this->lkey = $key;
-		$this->server = $_SERVER['SERVER_NAME'];
-	}
-
-	public function _error($reason)
-	{
-		return (object)array("error" => $reason);
-	}
-<<<<<<< HEAD
-
-	function encode($str)
-	{
-		global $config;
-
-		if(empty($config['lkey']))
-		{
-			$passw = '{security_code}';
-		}
-		else
-		{
-			$passw = $config['lkey'];
-		}
-		$salt = "Dn8*#2n!9j";
-		$len = strlen($str);
-		$gamma = '';
-		$n = $len>100 ? 8 : 2;
-		while( strlen($gamma)<$len )
-		{
-			$gamma .= substr(pack('H*', sha1($passw.$gamma.$salt)), 0, $n);
-		}
-		return base64_encode($str^$gamma);
-	}
-
-	function getFile($request)
-	{
-		$archive = @fopen($_SERVER['DOCUMENT_ROOT'] . '/uploads/temp/' . $request['extension'] . '.zip', "w");
-		$init = curl_init();
-		curl_setopt_array($init, array(
-			CURLOPT_URL => "http://api.codeburger.it/?method={$request['method']}&action={$request['action']}&key={$this->lkey}&domain={$this->server}&extension=" . $request['extension'],
-			CURLOPT_HEADER => 0,
-			CURLOPT_FILE => $archive
-		));
-		$return = curl_exec($init);
-		$json = (object)json_decode($return);
-		if($json->error)
-		{
-			return $json;
-		}
-			return true;
-
-		curl_close($init);
-	}
-
-=======
-	
->>>>>>> origin/master
 	function unzip($archive, $dest_dir, $files='')
 	{
 		$zip = new ZipArchive;
@@ -322,6 +158,7 @@ class admin
 		}
 		return $this->_error();
 	}
+
 	function translit($input, $param)
 	{
 		$arr_rus = array('а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ь', 'ы', 'ъ', 'э', 'ю', 'я', ' ');
@@ -332,14 +169,54 @@ class admin
 		}
 		return str_replace($arr_rus, $arr_eng, mb_strtolower($input));
 	}
-
-	function perms($file, $perm = 644)
-	{
-		if(substr(sprintf('%o', fileperms($file)), -3) != $perm)
-		{
-			return false;
-		}
-		return true;
-	}
 }
-$admin = new admin($config->lkey);
+$engine = new Engine();
+
+class Connections extends Engine
+{
+	public function __construct()
+	{
+		parent::__construct();
+	}
+
+  public function cPOST($url, $params, $parse=false)
+	{
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, urldecode(http_build_query($params)));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        $result = curl_exec($curl);
+        curl_close($curl);
+        if($parse)
+        {
+            return json_decode($result, true);
+        }
+
+        if($result) return json_decode($result);
+        return (object)$result['error']=true;
+	}
+
+	public function cGET($url, $params, $parse=false)
+	{
+      $curl = curl_init();
+      curl_setopt($curl, CURLOPT_URL, $url . '?' . urldecode(http_build_query($params)));
+      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+      $result = curl_exec($curl);
+      curl_close($curl);
+      if($parse)
+      {
+          return json_decode($result, true);
+      }
+
+      if($result) return json_decode($result);
+      return (object)$result['error']=true;
+	}
+
+	#################################
+	# API functions are not public #
+	###############################
+}
+$connect = new Connections();
