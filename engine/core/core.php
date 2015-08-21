@@ -35,7 +35,7 @@ abstract class dbConfig
 	protected $erorrs;
 
     public function error($data)
-	{
+		{
         $title = 'MySQL Error';
 		$err_type = "MySQL Error " . $data;
 
@@ -45,12 +45,12 @@ abstract class dbConfig
     }
 
     public function success()
-	{
+		{
         return (object)'success';
     }
 
     public function warning()
-	{
+		{
         return (object)'warning';
     }
 
@@ -72,12 +72,12 @@ abstract class dbConfig
 
 		#print_r($trace);
 		$title = 'MySQL Error';
-		$err_type = "MySQL Error ({$this->db_id->errno})nn{$query}n{$message}. nn In: {$trace[$level]['file']} on line: {$trace[$level]['line']}";
+		$err_type = "MySQL Error ({$this->db_id->errno})\n\n{$query}\n{$message}. \n\n In: {$trace[$level]['file']} on line: {$trace[$level]['line']}";
 
 		if(!include $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php")
 		{
-			$mysql_err['title'] = $title;
-			$mysql_err['err'] = $err_type;
+			$mysql_err['error'] = "Database error";
+			$mysql_err['code'] = "1";
 			echo json_encode($mysql_err);
 		}
 
