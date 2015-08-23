@@ -222,4 +222,4 @@ class Core extends Functions
 		}
 		return $member;
 	}
-}
+} 
