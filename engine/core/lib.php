@@ -46,35 +46,42 @@ class language
 
 	function langPack()
 	{
+		$main = array();
+		$custom = array();
+		$module = array();
+
 		if(AREA == 'frontSide')
 		{
-			if(!include ROOT . "/languages/" . self::getData()->lang . "/site.lng")
+			if(!$mainLang = file_get_contents(ROOT . "/languages/" . self::getData()->lang . "/site.lang"))
 			{
-				include ROOT . "/languages/English/site.lng";
+				$mainLang = file_get_contents(ROOT . "/languages/English/site.lang");
 			}
+			$main = json_decode($mainLang, true);
 		}
 		elseif(AREA == 'adminSide')
 		{
-			if(!include ROOT . "/languages/" . self::getData()->lang . "/admin.lng")
+			if(!$mainLang = file_get_contents(ROOT . "/languages/" . self::getData()->lang . "/admin.lang"))
 			{
-				include ROOT . "/languages/English/admin.lng";
+				$mainLang = file_get_contents(ROOT . "/languages/English/admin.lang");
 			}
+			$main = json_decode($mainLang, true);
 		}
 
-		if(!include ROOT . "/languages/" . self::getData()->lang . "/custom.lng")
+		if(!$customLang = file_get_contents(ROOT . "/languages/" . self::getData()->lang . "/custom.lang"))
 		{
-			include ROOT . "/languages/English/custom.lng";
+			$customLang = file_get_contents(ROOT . "/languages/English/custom.lang");
 		}
+		$custom = json_decode($customLang, true);
 
 		if($_GET['action'])
 		{
-			if(!include ROOT . "/languages/" . self::getData()->lang . "/" . basename($_GET['action'],'.lng') . ".lng")
+			if(!$moduleLang = file_get_contents(ROOT . "/languages/" . self::getData()->lang . "/" . basename($_GET['action']).".lang"))
 			{
-				include ROOT . "/languages/English/" . basename($_GET['action'],'.lng') . ".lng";
+				$moduleLang = file_get_contents(ROOT . "/languages/English/" . basename($_GET['action']).".lang");
 			}
+			$module = json_decode($moduleLang, true);
 		}
-
-		return $lang;
+		return $main + $custom + $module;
 	}
 
 	function makeList()

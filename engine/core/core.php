@@ -115,52 +115,52 @@ class Core extends Functions
 		$this->member = $member;
 
 		if (!empty($arguments))
-        {
-            foreach ($arguments as $property => $argument)
-			{
-                $this->{$property} = $argument;
-            }
+		{
+				foreach ($arguments as $property => $argument)
+				{
+						$this->{$property} = $argument;
         }
+    }
 	}
 
 	public function __call($method, $arguments)
 	{
-        $arguments = array_merge(array("MySQL Object" => $this), $arguments);
-        if (isset($this->{$method}) && is_callable($this->{$method}))
+		$arguments = array_merge(array("MySQL Object" => $this), $arguments);
+		if (isset($this->{$method}) && is_callable($this->{$method}))
 		{
-            return call_user_func_array($this->{$method}, $arguments);
-        }
+			return call_user_func_array($this->{$method}, $arguments);
+		}
 		else
 		{
-            throw new Exception("Fatal error: Call to undefined method MySQL Object::{$method}()");
-        }
-    }
+			throw new Exception("Fatal error: Call to undefined method MySQL Object::{$method}()");
+		}
+	}
 
 	public function notif($type='', $mess)
 	{
 		switch($type)
 		{
-			case error:
+			case "error":
 				$icon = 'exclamation';
 				$nType = 'error';
 			break;
 
-			case notif:
+			case "notif":
 				$icon = 'info';
 				$nType = 'notif';
 			break;
 
-			case db:
+			case "db":
 				$icon = 'database';
 				$nType = 'database';
 			break;
 
-			case license:
+			case "license":
 				$icon = 'key';
 				$nType = 'license';
 			break;
 
-			case systm:
+			case "system":
 				$icon = 'hand-peace-o';
 				$nType = 'system';
 			break;
