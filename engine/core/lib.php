@@ -79,7 +79,7 @@ class language
 			{
 				$moduleLang = file_get_contents(ROOT . "/languages/English/" . basename($_GET['action']).".lang");
 			}
-			$module = json_decode($moduleLang, true);
+			if($moduleLang)	$module = json_decode($moduleLang, true);
 		}
 		return $main + $custom + $module;
 	}
