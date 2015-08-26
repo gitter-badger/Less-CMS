@@ -56,7 +56,6 @@ class Template extends Engine
 		self::setMember();
 		self::setLang();
 		$this->template = $this->content;
-		return $this->template;
 	}
 
 	public function set($tag, $data)
