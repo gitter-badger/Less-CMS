@@ -11,7 +11,7 @@ class Template extends Engine
 	var $content;
 	var $template;
 	var $tags = array();
-	var $result = array ('info' => '', 'content' => '');
+	var $result = array('info'=>'','content'=>'');
 
 	public function __construct()
 	{
