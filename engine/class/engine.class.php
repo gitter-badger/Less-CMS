@@ -16,7 +16,7 @@ class Engine
 
 	public function encode($str)
   {
-    return eval(base64_decode('JHBhc3N3ID0gJ2w4eFpaVjZBWnFWb0Y5MVhNNyc7CmlmKCFlbXB0eSgkdGhpcy0+Y29uZmlnLT5sa2V5KSl7JHBhc3N3ID0gJHRoaXMtPmNvbmZpZy0+bGtleTt9CiRzYWx0ID0gIkRuOCojMm4hOWoiOwokbGVuID0gc3RybGVuKCRzdHIpOwokZ2FtbWEgPSAnJzsKJG4gPSAkbGVuPjEwMCA/IDggOiAyOwp3aGlsZSggc3RybGVuKCRnYW1tYSk8JGxlbiApCnsKICAkZ2FtbWEgLj0gc3Vic3RyKHBhY2soJ0gqJywgc2hhMSgkcGFzc3cuJGdhbW1hLiRzYWx0KSksIDAsICRuKTsKfQpyZXR1cm4gYmFzZTY0X2VuY29kZSgkc3RyXiRnYW1tYSk7Cg=='));
+    return eval(base64_decode('JHBhc3N3ID0gJ2w4eFpaVjZBWnFWb0Y5MVhNNyc7CmlmKCFlbXB0eSgkR0xPQkFMU1snY29uZmlnJ10tPmxrZXkpKXskcGFzc3cgPSAkR0xPQkFMU1snY29uZmlnJ10tPmxrZXk7fQokc2FsdCA9ICJEbjgqIzJuITlqIjsKJGxlbiA9IHN0cmxlbigkc3RyKTsKJGdhbW1hID0gJyc7CiRuID0gJGxlbj4xMDAgPyA4IDogMjsKd2hpbGUoIHN0cmxlbigkZ2FtbWEpPCRsZW4gKQp7CiAgJGdhbW1hIC49IHN1YnN0cihwYWNrKCdIKicsIHNoYTEoJHBhc3N3LiRnYW1tYS4kc2FsdCkpLCAwLCAkbik7Cn0KcmV0dXJuIGJhc2U2NF9lbmNvZGUoJHN0cl4kZ2FtbWEpOw=='));
   }
 
 	function addSkey($name, $value)
@@ -53,7 +53,6 @@ class Engine
 
 	function random_string($length, $chartypes)
 	{
-
 	   $chartypes_array=explode(",", $chartypes);
 	   $lower = 'abcdefghijklmnopqrstuvwxyz';
 	   $upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -218,5 +217,6 @@ class Connections extends Engine
 	#################################
 	# API functions are not public #
 	###############################
+
 }
 $connect = new Connections();

@@ -3,16 +3,16 @@ if (!defined('{security_code}')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/er
 
 require_once CORE 	. 'core.php';
 require_once CORE 	. 'lib.php';
-require_once ENGINE . 'class/mail.class.php';
+require_once CORE 	. 'auth.php';
 #$recaptcha = new \ReCaptcha\ReCaptcha($config->s_key);
 $db = new mysql(); // Default database used in the script
 $lang = $language->langPack();
 $core = new Core();
 $member = $core->setUser();
-$tpl = new template(ROOT . '/templates/' . $config->template . '/');
+$tpl = new Template();
 
 if(isset($_GET['setLang']))
-{	
+{
 	if(setcookie("sLang", $_GET['setLang']))
 	{
 		header("Location: /" . $_GET['backLink']);
@@ -21,7 +21,7 @@ if(isset($_GET['setLang']))
 
 if($_POST['language'] == 'getList')
 {
-	echo json_encode($lang);	
+	echo json_encode($lang);
 }
 
 $dir = scandir(ENGINE . 'extensions/');
@@ -35,55 +35,57 @@ foreach($dir as $file)
 
 if(!$_GET)
 {
-	$siteTitle = $config->title;	
+	$siteTitle = $config->title;
 	$module = 'main';
 }
 else
 {
 	$action = $core->load($_GET['action']);
-		
+
 	switch($action)
 	{
-		case 'signout':
-			include ENGINE . '/core/membership/signout.php';
-			$module = 'signout';
-		break;
-			
 		case 'signin':
-			include ENGINE . '/core/membership/signin.php';	
-			$module = 'signin';		
+			$module = 'signin';
+			$auth = new Auth($module);
 		break;
-			
+
+		case 'signout':
+			$module = 'signout';
+			$auth = new Auth($module);
+		break;
+
 		case 'signup':
-			include ENGINE . '/core/membership/signup.php';	
-			$module = 'signup';		
+			$module = 'signup';
+			$auth = new Auth($module);
 		break;
-			
-		case 'signup':
-			include ENGINE . '/core/membership/signup.php';	
-			$module = 'signup';		
-		break;
-		
+
 		default:
-			
+
 			$db->select("extensions", "link = '{$action}' AND public = '1' ");
-		
+
 			if($db->numRows())
 			{
-				$obj = $db->getObject();	
-				$module = $obj->link;
-				if(include ENGINE . "modules/{$obj->link}.php")
+				$row = $db->getObject();
+				$db->free();
+
+				$module = $row->link;
+				if(include ENGINE . "modules/{$row->link}.php")
 				{
 					$siteTitle = $title . ' - ' . $config->title;
-					$module = $obj->link;
+					$module = $row->link;
 				}
-				$db->free();
+				else
+				{
+					$core->mess($lang['error'], $lang['404']);
+					$siteTitle = $lang['error'] . ' - ' . $config->title;
+				}
+
 			}
 			else
 			{
 				if(include ENGINE . "plugins/{$action}.php")
 				{
-					$siteTitle = $title . ' - ' . $config->title;	
+					$siteTitle = $title . ' - ' . $config->title;
 					$module = $action;
 				}
 				else
@@ -92,7 +94,7 @@ else
 					$siteTitle = $lang['error'] . ' - ' . $config->title;
 				}
 			}
-			
+
 		break;
 	}
 }

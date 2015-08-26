@@ -7,7 +7,7 @@ class MySQL extends dbConfig implements database
 	{
 		$this->db = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_NAME);
 		$this->db->set_charset("utf8");
-		
+
         if (!empty($arguments))
         {
             foreach ($arguments as $property => $argument)
@@ -16,7 +16,7 @@ class MySQL extends dbConfig implements database
             }
         }
 	}
-	
+
 	public function __call($method, $arguments)
 	{
         $arguments = array_merge(array("MySQL Object" => $this), $arguments);
@@ -29,7 +29,7 @@ class MySQL extends dbConfig implements database
             throw new Exception("Fatal error: Call to undefined method MySQL Object::{$method}()");
         }
     }
-	
+
 	public function query($request)
 	{
 		if ($this->db->connect_errno)
@@ -40,9 +40,9 @@ class MySQL extends dbConfig implements database
 		{
 			self::sqlError($request, $this->db->error);
 		}
-		return $this->query_id;		
+		return $this->query_id;
 	}
-	
+
 	public function select($table='undefined', $where='', $order='', $limit='', $cols=false)
 	{
 		if(!empty($where))
@@ -63,7 +63,7 @@ class MySQL extends dbConfig implements database
 		}
 		return self::query( "SELECT {$cols} FROM `{$table}` {$where} {$order} {$limit}" );
 	}
-	
+
 	public function insert($table='undefined', $data)
 	{
 		if(!is_array($data))
@@ -73,11 +73,11 @@ class MySQL extends dbConfig implements database
 		$request = self::build($data, 'insert');
 		$cols = $request['cols'];
 		$values = $request['values'];
-			
+
 		self::query( "INSERT INTO `{$table}`({$cols}) VALUES ({$values})" );
 		return true;
 	}
-	
+
 	public function update($table='undefined', $params, $where)
 	{
 		if(!is_array($params))
@@ -87,18 +87,18 @@ class MySQL extends dbConfig implements database
 		self::query( "UPDATE `{$table}` SET " . self::build($params, 'update') . " WHERE {$where}" );
 		return true;
 	}
-	
+
 	public function delete($table='undefined', $where)
 	{
 		self::query( "DELETE FROM `{$table}` WHERE {$where}" );
 		return true;
 	}
-	
+
 	public function numRows()
 	{
 		return $this->query_id->num_rows;
 	}
-	
+
 	public function getObject($object=true)
 	{
 		if(!$object)
@@ -110,17 +110,22 @@ class MySQL extends dbConfig implements database
 			return $this->query_id->fetch_object();
 		}
 	}
-	
+
 	public function version()
 	{
-		return $this->db->server_info;		
+		return $this->db->server_info;
 	}
-	
+
 	public function free()
 	{
 		$this->query_id->close();
 	}
-	
+
+	public function real_escape_string($str)
+	{
+		return $this->db->real_escape_string($str);
+	}
+
 	public function build($array, $template)
 	{
 		if($template == 'update')
@@ -138,7 +143,7 @@ class MySQL extends dbConfig implements database
 			foreach($array as $key => $value)
 			{
 				$col[] .= "`{$key}`";
-				$val[] .= "'{$value}'";				
+				$val[] .= "'{$value}'";
 			}
 			$cols .= implode(',', $col);
 			$values .= implode(',', $val);

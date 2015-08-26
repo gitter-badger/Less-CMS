@@ -81,6 +81,7 @@ class language
 			}
 			if($moduleLang)	$module = json_decode($moduleLang, true);
 		}
+
 		return $main + $custom + $module;
 	}
 

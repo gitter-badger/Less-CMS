@@ -1,0 +1,39 @@
+{
+
+ "welcome_cherry" : "welcome to cherrypie engine",
+
+ "welcome_mess" : "the most rapid and reliable content management system",
+
+ "engine_info" : "engine specifications",
+
+ "database" : "database",
+
+ "database_info" : "Default CherryPie uses a database MySQL. What ensures reliable and quick work with the data. But you can use any other, or cross them.",
+
+ "multilingual" : "multilingual",
+
+ "multilingual_info" : "The engine works multilanguage mode. All language packs are stored in the JSON files. Each package is updated independently.",
+
+ "cherry_hub" : "CherryHub&copy;",
+
+ "cherry_hub_info" : "Each engine is directly related to the repository \"CherryHub\" where are all the additions to the engine of the plug-ins to the templates.",
+
+ "templates" : "templates",
+
+ "templates_info" : "The template engine makes it easy to customize the look of the site. You can use the templates from the \"CherryHub\", or its third-party developers.",
+
+ "open_source" : "open source",
+
+ "open_source_info" : "CherryPie is the open source product. all source code is available on GitHub.",
+
+ "stability" : "stability",
+
+ "stability_info" : "The engine is stable, fast and reliable",
+
+ "thx_mess" : "Thank you for choosing, we hope you enjoy using.",
+
+ "log_to_customize" : "Log in to customize the engine",
+
+ "customize_login" : "This button you can customize in the file '/engine/components/menu.php'"
+
+}

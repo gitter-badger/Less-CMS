@@ -54,7 +54,7 @@ abstract class dbConfig
         return (object)'warning';
     }
 
-    public function sqlError($query, $message)
+  public function sqlError($query, $message)
 	{
 		if($query)
 		{
@@ -222,4 +222,4 @@ class Core extends Functions
 		}
 		return $member;
 	}
-} 
+}
