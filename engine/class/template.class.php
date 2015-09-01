@@ -148,14 +148,13 @@ class Template extends Engine
 		}
 		$this->template = str_replace($find, $replace, $this->template);
 		$this->result[$tpl] .= $this->template;
-		self::_clear();
+		self::clear();
 	}
 
-	protected function _clear()
+	protected function clear()
 	{
-		$this->data          = array();
-		$this->block_data    = array();
-		$this->copy_template = $this->template;
+		$this->tags    = array();
+		$this->content = $this->template;
 	}
 
 }
