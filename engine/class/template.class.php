@@ -1,7 +1,7 @@
 <?php
-if (!defined('{security_code}')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php"; exit;}
+if (!defined('853ae90f0351324bd73ea615e6487517')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php"; exit;}
 /*
- * Template engine v2.0
+ * Template engine v2.0.1
  */
 class Template extends Engine
 {
@@ -53,6 +53,21 @@ class Template extends Engine
 			$this->content = preg_replace_callback("#\\[(logged)=(.+?)\\](.*?)\\[/logged\\]#is", array(&$this,'check_login'), $this->content);
 		}
 
+		if (strpos($this->content, "[iscat=") !== false)
+		{
+			$this->content = preg_replace_callback("#\\[(iscat)=(.+?)\\](.*?)\\[/iscat\\]#is", array(&$this,'check_md_cat'), $this->content);
+		}
+
+		if (strpos($this->content, "[notcat=") !== false)
+		{
+			$this->content = preg_replace_callback("#\\[(notcat)=(.+?)\\](.*?)\\[/notcat\\]#is", array(&$this,'check_md_cat'), $this->content);
+		}
+
+		if (strpos($this->content, "[nocats]") !== false)
+		{
+			$this->content = preg_replace_callback("#\\[nocats\\](.*?)\\[/nocats\\]#is", array(&$this,'nocats'), $this->content);
+		}
+
 		self::setMember();
 		self::setLang();
 		$this->template = $this->content;
@@ -79,11 +94,55 @@ class Template extends Engine
 		}
 	}
 
-	function check_module($matches = array())
+	private function nocats($matches = array())
+	{
+		if(!isset($_GET['sub']) && !isset($_GET['param']))
+		{
+			return $matches[1];
+		}
+	}
+
+	private function check_md_cat($matches = array())
+	{
+		global $mod_cat;
+
+		$is 		 = $matches[2];
+		$block   = $matches[3];
+
+		if ($matches[1] == "iscat")
+		{
+			$action = true;
+		}
+		else
+		{
+			$action = false;
+		}
+
+		$is = explode('|', $is);
+
+		if($action)
+		{
+			if (in_array($module, $is))
+			{
+				return $block;
+			}
+			return false;
+		}
+		else
+		{
+			if (!in_array($module, $is))
+			{
+				return $block;
+			}
+			return false;
+		}
+	}
+
+	private function check_module($matches = array())
 	{
 		global $module;
 
-		$is = $matches[2];
+		$is 		 = $matches[2];
 		$block   = $matches[3];
 
 		if ($matches[1] == "is")
@@ -115,7 +174,7 @@ class Template extends Engine
 		}
 	}
 
-	function check_login($matches = array())
+	private function check_login($matches = array())
 	{
 		global $logged;
 
