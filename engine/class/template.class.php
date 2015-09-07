@@ -96,7 +96,7 @@ class Template extends Engine
 
 	private function nocats($matches = array())
 	{
-		if(!isset($_GET['sub']) && !isset($_GET['param']))
+		if(isset($_GET['action']) && !isset($_GET['sub']) && !isset($_GET['param']))
 		{
 			return $matches[1];
 		}
