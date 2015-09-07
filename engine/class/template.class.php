@@ -1,5 +1,5 @@
 <?php
-if (!defined('853ae90f0351324bd73ea615e6487517')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php"; exit;}
+if (!defined('{security_code}')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php"; exit;}
 /*
  * Template engine v2.0.1
  */
