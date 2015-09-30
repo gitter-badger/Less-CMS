@@ -3,44 +3,29 @@ if (!defined('{security_code}')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/er
 
 class MySQL extends dbConfig implements database
 {
-	function __construct(array $arguments = array())
+	function __construct()
 	{
-		$this->db = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_NAME);
-		$this->db->set_charset("utf8");
-
-        if (!empty($arguments))
-        {
-            foreach ($arguments as $property => $argument)
-			{
-                $this->{$property} = $argument;
-            }
-        }
+		self::init();
 	}
-
-	public function __call($method, $arguments)
+	public function init()
 	{
-        $arguments = array_merge(array("MySQL Object" => $this), $arguments);
-        if (isset($this->{$method}) && is_callable($this->{$method}))
-		{
-            return call_user_func_array($this->{$method}, $arguments);
-        }
-		else
-		{
-            throw new Exception("Fatal error: Call to undefined method MySQL Object::{$method}()");
-        }
-    }
-
+			$this->db = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_NAME);
+			$this->db->set_charset("utf8");
+	}
 	public function query($request)
 	{
+		$say = new stdClass();
+		$say->error = false;
 		if ($this->db->connect_errno)
 		{
-			self::sqlError($this->db->connect_error);
+			$say->error = $this->db->connect_error;
 		}
-		if(!$this->query_id = $this->db->query( $request ))
+		if(!$this->query_id = $this->db->query($request))
 		{
-			self::sqlError($request, $this->db->error);
+			$say->error = $this->db->error;
 		}
-		return $this->query_id;
+		if(!$say->error) return $this->query_id;
+		return $say;
 	}
 
 	public function select($table='undefined', $where='', $order='', $limit='', $cols=false)
@@ -74,8 +59,7 @@ class MySQL extends dbConfig implements database
 		$cols = $request['cols'];
 		$values = $request['values'];
 
-		self::query( "INSERT INTO `{$table}`({$cols}) VALUES ({$values})" );
-		return true;
+		return self::query("INSERT INTO `{$table}`({$cols}) VALUES ({$values})");
 	}
 
 	public function update($table='undefined', $params, $where)
@@ -84,14 +68,12 @@ class MySQL extends dbConfig implements database
 		{
 			self::error('Only array allowed');
 		}
-		self::query( "UPDATE `{$table}` SET " . self::build($params, 'update') . " WHERE {$where}" );
-		return true;
+		return self::query( "UPDATE `{$table}` SET " . self::build($params, 'update') . " WHERE {$where}" );
 	}
 
 	public function delete($table='undefined', $where)
 	{
-		self::query( "DELETE FROM `{$table}` WHERE {$where}" );
-		return true;
+		return self::query( "DELETE FROM `{$table}` WHERE {$where}" );
 	}
 
 	public function numRows()
@@ -105,10 +87,8 @@ class MySQL extends dbConfig implements database
 		{
 			return $this->query_id->fetch_row();
 		}
-		else
-		{
-			return $this->query_id->fetch_object();
-		}
+		return $this->query_id->fetch_object();
+
 	}
 
 	public function version()
