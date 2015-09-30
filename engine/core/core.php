@@ -33,57 +33,6 @@ abstract class dbConfig
 	protected $db_id;
 	protected $query_id;
 	protected $erorrs;
-
-    public function error($data)
-		{
-        $title = 'MySQL Error';
-		$err_type = "MySQL Error " . $data;
-
-		require_once ERROR;
-
-		exit();
-    }
-
-    public function success()
-		{
-        return (object)'success';
-    }
-
-    public function warning()
-		{
-        return (object)'warning';
-    }
-
-  public function sqlError($query, $message)
-	{
-		if($query)
-		{
-			$query = preg_replace("/([0-9a-f]){32}/", "********************************", $query);
-		}
-		$query = htmlspecialchars($query, ENT_QUOTES, 'ISO-8859');
-		$message = htmlspecialchars($message, ENT_QUOTES, 'ISO-8859');
-		$trace = debug_backtrace();
-
-		$level = 0;
-		if ($trace[1]['function'] == "query" ) $level = 2;
-		if ($trace[2]['function'] == "super_query" ) $level = 3;
-
-		$trace[$level]['file'] = str_replace(ROOT, "", $trace[$level]['file']);
-
-		#print_r($trace);
-		$title = 'MySQL Error';
-		$err_type = "MySQL Error ({$this->db_id->errno})\n\n{$query}\n{$message}. \n\n In: {$trace[$level]['file']} on line: {$trace[$level]['line']}";
-
-		if(!include $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php")
-		{
-			$mysql_err['error'] = "Database error";
-			$mysql_err['code'] = "1";
-			echo json_encode($mysql_err);
-		}
-
-		exit();
-    }
-
 }
 
 spl_autoload_register(function ($name)
