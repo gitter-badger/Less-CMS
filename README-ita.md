@@ -10,6 +10,6 @@
 
 Maggiori informazioni in [wiki](https://github.com/CodeBurgerINT/CherryPie-Engine/wiki)
 
-<b>Noi abbiamo usato:</b>
+<b>Noi abbiamo usato:</b><br>
 [reCaptcha](https://www.google.com/recaptcha/intro/index.html) - Google<br>
 [TabGeo](http://tabgeo.com/) - TabGeo.com
