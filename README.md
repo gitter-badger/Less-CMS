@@ -1,5 +1,5 @@
 #Attention!
-<b>Posted code is no longer supported, CherryPie Engine source code have been completely rewritten. To get acquainted with the new version of the engine will be after its public release.</b>
+<b>Posted code is no longer supported, CherryPie Engine source code have been completely rewritten. An updated engine version will be presented in the repository after the public release.</b>
 
 >This is a source code is not productive, it is not recommended to use as it is. To get a version of prodduttiva please visit [CodeBurger](http://www.codeburger.it).
 
