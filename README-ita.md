@@ -1,5 +1,5 @@
 #Attenzione!
-Codice pubblicato non è più supportato, source code di CherryPie Engine è stato completamente riscritto. Сonoscere la nuova versione del engine sarà possibile dopo release pubblico.
+<b>Codice pubblicato non è più supportato, source code di CherryPie Engine è stato completamente riscritto. Сonoscere la nuova versione del engine sarà possibile dopo release pubblico.</b>
 
 >Questo è un source code non prodduttivo, non è consilato di usare cosi com'è. Per ricevere una versione prodduttiva si prega di visitare [CodeBurger](http://www.codeburger.it)
 
