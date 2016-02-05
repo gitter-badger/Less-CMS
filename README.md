@@ -1,15 +1,16 @@
 #Attention!
 <b>Posted code is no longer supported, CherryPie Engine source code have been completely rewritten. An updated engine version will be presented in the repository after the public release.</b>
 
->This source code is not productive, it is not recommended to use as it is. To get aproduct version please visit [CodeBurger](http://www.codeburger.it).
+>The code has been removed due to an update. The new version will be issued on the name of the Less CMS by [CODE™](http://www.codeburger.it).
 
 ###Changelog
-* CPEngine v3.7.6 - Deprecated
+* 05.02.2016 - Less CMS on building
+* CPEngine - Deprecated
 
 >* Initial version
 
 
-More information in the [wiki](https://github.com/CodeBurgerINT/CherryPie-Engine/wiki)
+More information in the [wiki](https://github.com/CODEtm/Less-CMS/wiki)
 
 <b>We have used:</b>
 
