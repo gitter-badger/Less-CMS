@@ -1,7 +1,8 @@
 >Il source code è stato rimosso a causa di aggiornamento. La nuova versione sarà pubblicato con nome Less CMS da [CODE™](http://www.codeburger.it).
 
 ###Changelog
-* CPEngine v3.7.6 - Obsoleta
+* Less CMS - on building [05.02.2016]
+* CPEngine - Obsoleta [13.11.2015]
 
 >* versione iniziale
 
