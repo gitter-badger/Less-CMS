@@ -1,12 +1,11 @@
 <img src="http://www.codeburger.it/banner.jpg">
->The source code has been removed due to update. The new version will be issued on the name of the Less CMS by [CODE™](http://www.codeburger.it).
 
 ###Changelog
-* Less CMS - on building [05.02.2016]
-* CPEngine - Deprecated [13.11.2015]
+#####Less CMS
+* [07.02.2016] v0.5 - Released
 
->* Initial version
-
+#####CPEngine
+* [13.11.2015] CPEngine - Deprecated
 
 More information in the [wiki](https://github.com/CODEtm/Less-CMS/wiki)
 
