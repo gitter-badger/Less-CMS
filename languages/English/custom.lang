@@ -1,0 +1,41 @@
+{
+
+ "welcome_in" : "Welcome to Less CMS",
+
+ "welcome_mess" : "the most rapid and reliable content management system",
+
+ "welcome_mess_ar" : "You are in the admin panel, this block is part of the preview, to clean it, remove the file \"/engine/admin/extensions/demo_preview.php\".",
+
+ "engine_info" : "engine specifications",
+
+ "database" : "database",
+
+ "database_info" : "Default Less CMS uses a database MySQL. What ensures reliable and quick work with the data. But you can use any other, or cross them.",
+
+ "multilingual" : "multilingual",
+
+ "multilingual_info" : "The engine using default multilanguage mode. All language packs are stored in the JSON format. Language packs are updated together with the engine. All extra modules contain their own language packs.",
+
+ "simple_fast" : "Simple & fast",
+
+ "simple_fast_info" : "If you need a supplement that is not in the repositories or in the store, but you know PHP, you can write your own supplement very quickly using Less developers API. All the necessary information you will find in our <a href=\"https://github.com/CODEtm/Less-CMS/wiki\">WIKI</a>",
+
+ "templates" : "templates",
+
+ "templates_info" : "Templates can be downloaded for free from our website or buy premium templates on <a href=\"http://themeforest.net/\">ThemeForest</a>. So you can adapt any HTML template using <a href=\"https://github.com/CODEtm/Less-CMS/wiki/Templates\">manual</a>.",
+
+ "open_source" : "open source",
+
+ "open_source_info" : "Less CMS is the open source product. all source code is available on GitHub.",
+
+ "stability" : "stability",
+
+ "stability_info" : "We are constantly working to improve our products, this applies to the Less CMS. If you find a bug in the engine or one of its components, please write to our bug tracker. Depending on the severity of the fault, you will get a reward.",
+
+ "thx_mess" : "Thank you for choosing, we hope you enjoy using.",
+
+ "log_to_customize" : "Log in to customize the engine",
+
+ "customize_login" : "This button you can customize in the file '/engine/components/menu.php'"
+
+}

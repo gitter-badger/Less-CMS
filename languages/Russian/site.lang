@@ -1,0 +1,72 @@
+{
+
+	"home"	:	"Главная",
+
+	"error"	:	"Ошибка",
+
+	"success"	:	"Успех!",
+
+	"cancel"	:	"Отмена",
+
+	"not_found"	:	"Страница не найдена",
+
+	"or"	:	"или",
+
+	"goback"	:	"Вернутся назад",
+
+	"social_login"	:	"Войти через соц.сеть",
+
+	"signin"	:	"Войти",
+
+	"signout"	:	"Выйти",
+
+	"signup"	:	"Регистрация",
+
+	"login_vk"	:	"Регистрация через ВКонтакте",
+
+	"login_fb"	:	"Регистрация через Facebook",
+
+	"login_tw"	:	"Регистрация через Twitter",
+
+	"password"	:	"Пароль",
+
+	"password2"	:	"Пароль еще раз",
+
+	"save"	:	"Сохранить",
+
+	"fname"	:	"Имя",
+
+	"lname"	:	"Фамилия",
+
+	"member_registered"	:	"Пользователь с таким e-mail уже зарегистрирован",
+
+	"screen_name"	:	"Логин",
+
+	"need_login"	:	"Для продолжения необходимо войти",
+
+	"no_member"	:	"Пользователь с таким именем не найден",
+
+	"language"	:	"Язык",
+
+	"profile"	:	"профиль",
+
+	"edit_profile"	:	"Редактировать",
+
+	"order_new"	:	"Новая лицензия",
+
+	"gagagagagagaga"	:	"gagagagagagaga",
+
+	"gagagagagagaga"	:	"gagagagagagaga",
+
+	"gagagagagagaga"	:	"gagagagagagaga",
+
+	"gagagagagagaga"	:	"gagagagagagaga",
+
+	"gagagagagagaga"	:	"gagagagagagaga",
+
+	"gagagagagagaga"	:	"gagagagagagaga",
+
+	"gagagagagagaga"	:	"gagagagagagaga",
+
+	"gagagagagagaga"	:	"gagagagagagaga"
+}

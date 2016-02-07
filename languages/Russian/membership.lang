@@ -1,0 +1,37 @@
+{
+
+ "membership" : "Управление пользователями",
+
+ "edit_user" : "Редактировать пользователя",
+
+ "ban_user" : "Забанить пользователя",
+
+ "unban_user" : "Разбанить пользователя",
+
+ "delete_user" : "Удалить пользователя",
+
+ "email_or_login" : "Вход с логином",
+
+ "email_or_login_def" : "Если не выбрано вход производится используя email(так безопаснее)",
+
+ "dsdsadsdsd" : "dsdsadsdsd",
+
+ "dsdsadsdsd" : "dsdsadsdsd",
+
+ "dsdsadsdsd" : "dsdsadsdsd",
+
+ "dsdsadsdsd" : "dsdsadsdsd",
+
+ "dsdsadsdsd" : "dsdsadsdsd",
+
+ "dsdsadsdsd" : "dsdsadsdsd",
+
+ "dsdsadsdsd" : "dsdsadsdsd",
+
+ "dsdsadsdsd" : "dsdsadsdsd",
+
+ "dsdsadsdsd" : "dsdsadsdsd",
+
+ "dsdsadsdsd" : "dsdsadsdsd"
+
+}

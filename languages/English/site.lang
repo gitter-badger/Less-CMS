@@ -1,0 +1,50 @@
+{
+
+ "home" : "Home",
+
+ "error" : "Error",
+
+ "success" : "Success!",
+
+ "cancel" : "Cancel",
+
+ "not_found" : "Page not found",
+
+ "or" : "or",
+
+ "goback" : "Go back",
+
+ "social_login" : "Sign In via social network",
+
+ "signin" : "Sign In",
+
+ "signout" : "Sign Out",
+
+ "signup" : "Sign Up",
+
+ "login_vk" : "Sign In via ВКонтакте",
+
+ "login_fb" : "Sign In via Facebook",
+
+ "login_tw" : "Sign In via Twitter",
+
+ "password" : "Password",
+
+ "password2" : "Retype password",
+
+ "save" : "Save",
+
+ "fname" : "First name",
+
+ "lname" : "Last name",
+
+ "member_registered" : "This email already registered",
+
+ "screen_name" : "Login",
+
+ "need_login" : "To continue, you must enter",
+
+ "no_member" : "User with this login was not found",
+
+ "language" : "Language"
+}

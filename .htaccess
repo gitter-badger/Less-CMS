@@ -1,0 +1,30 @@
+RewriteEngine on
+
+RewriteBase /
+
+Options All -ExecCGI -Indexes -Includes +FollowSymLinks
+
+ErrorDocument 403 /undefined
+
+ErrorDocument 404 /undefined
+
+
+RewriteRule ^registration(/?)$ index.php?do=membership&case=registration [L]
+
+# Without slash
+RewriteRule ^([^.]+)/([^.]+)/([^.]+)/([0-9]+)(/?)$ index.php?do=$1&case=$2&su=$3&page=$4 [L]
+RewriteRule ^([^.]+)/([^.]+)/([0-9]+)(/?)$ index.php?do=$1&case=$2&page=$3 [L]
+RewriteRule ^([^.]+)/([0-9]+)/([^.]+)(/?)$ index.php?do=$1&page=$2&su=$3 [L]
+RewriteRule ^([^.]+)/([^.]+)/([^.]+)(/?)$ index.php?do=$1&case=$2&su=$3 [L]
+RewriteRule ^([^.]+)/([0-9]+)(/?)$ index.php?do=$1&page=$2 [L]
+RewriteRule ^([^.]+)/([^.]+)(/?)$ index.php?do=$1&case=$2 [L]
+RewriteRule ^([^.]+)(/?)$ index.php?do=$1 [L]
+
+# With slash
+RewriteRule ^([^.]+)/([^.]+)/([^.]+)/([0-9]+)/(/?)$ index.php?do=$1&case=$2&su=$3&page=$4 [L]
+RewriteRule ^([^.]+)/([^.]+)/([0-9]+)/(/?)$ index.php?do=$1&case=$2&page=$3 [L]
+RewriteRule ^([^.]+)/([0-9]+)/([^.]+)/(/?)$ index.php?do=$1&page=$2&su=$3 [L]
+RewriteRule ^([^.]+)/([^.]+)/([^.]+)/(/?)$ index.php?do=$1&case=$2&su=$3 [L]
+RewriteRule ^([^.]+)/([0-9]+)/(/?)$ index.php?do=$1&page=$2 [L]
+RewriteRule ^([^.]+)/([^.]+)/(/?)$ index.php?do=$1&case=$2 [L]
+RewriteRule ^([^.]+)/(/?)$ index.php?do=$1 [L]

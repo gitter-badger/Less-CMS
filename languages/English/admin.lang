@@ -1,0 +1,235 @@
+{
+
+  "home" : "Home",
+
+  "modules" : "Modules",
+
+  "modules_manager" : "Modules manager",
+
+  "profile" : "Profile",
+
+  "language" : "Language",
+
+  "signin" : "Sign In",
+
+  "signout" : "Sign Out",
+
+  "signup" : "Sign Up",
+
+  "success" : "Success",
+
+  "error" : "Error",
+
+  "notif" : "Notifications",
+
+  "database" : "Database",
+
+  "license" : "License",
+
+  "system" : "System",
+
+  "no_notif" : "No new notifications",
+
+  "not_found" : "Page not found",
+
+  "goback" : "Go back",
+
+  "title" : "Title",
+
+  "description" : "Description",
+
+  "type" : "Type",
+
+  "version" : "Version",
+
+  "hub_version" : "Hub version",
+
+  "install" : "Install",
+
+  "cancel" : "Cancel",
+
+  "save" : "Save",
+
+  "accept" : "Accept",
+
+  "remove" : "Remove",
+
+  "edit" : "Edit",
+
+  "update" : "Update",
+
+  "sys_status" : "System status",
+
+  "local_stats" : "Server status",
+
+  "local_stats_descr" : "Server state on which the application is deployed",
+
+  "engine_version" : "Engine version",
+
+  "os" : "Server OS",
+
+  "updated" : "Updated files:",
+
+  "tupdate" : "To update",
+
+  "locked" : "Updates blocked",
+
+  "changelog" : "Change Log",
+
+  "system_config" : "Settings",
+
+  "update_to" : "update to",
+
+  "st_application" : "Application",
+
+  "st_security" : "Security",
+
+  "st_communication" : "Communication",
+
+  "st_social" : "Social",
+
+  "st_general" : "General",
+
+  "st_additional" : "Additional",
+
+  "st_modules" : "Modules",
+
+  "st_enable_captcha" : "Enable reCapthca",
+
+  "sitename" : "Site title",
+
+  "keywords" : "Keywords",
+
+  "domain" : "Domain",
+
+  "lkey" : "License key",
+
+  "template" : "Template",
+
+  "captcha_pkey" : "Public key Captcha",
+
+  "captcha_skey" : "Secret key Captcha",
+
+  "smtp_host" : "Server",
+
+  "smtp_port" : "Port",
+
+  "smtp_user" : "Username",
+
+  "smtp_pass" : "Password",
+
+  "smtp_from" : "Email address from",
+
+  "smtp_mode" : "Email mode",
+
+  "config_saved" : "Changes saved",
+
+  "warning" : "Warning",
+
+  "sdelete" : "Are you sure you want to delete this?",
+
+  "extensionlowed" : "Extension inadmissible",
+
+  "avatar_updated" : "Profile photo updated successfully",
+
+  "filed_uploading" : "Error uploading file",
+
+  "members" : "Members",
+
+  "add" : "Add",
+
+  "verified" : "Verified",
+
+  "notverified" : "Not verified",
+
+  "regedat" : "Registered since",
+
+  "month"  :  "Month",
+
+  "year"  :  "Year",
+
+  "file_not_saved" : "File not saved!",
+
+  "rename" : "Rename",
+
+  "profile_settings" : "Profile settings",
+
+  "fname" : "First name",
+
+  "lname" : "Last name",
+
+  "login" : "Login",
+
+  "email" : "Email",
+
+  "aboutme" : "About me",
+
+  "file_perms_error" : "Permissions error.",
+
+  "perm_problems" : "File <b>%s</b> must have the permissions \"%d\".",
+
+  "m_file_404" : "File module was not found",
+
+  "app_id" : "Application ID",
+
+  "secure_key" : "Secure key",
+
+  "session_locked" : "Session is blocked",
+
+  "pass_err" : "Wrong password",
+
+  "pass_not_be_empty" : "Password can not be empty <span class=\"name\">(</span>least 4 characters<span class=\"name\">)</span>",
+
+  "welcome" : "Welcome back",
+
+  "block_info" : "To enter the admin panel, type your password",
+
+  "password" : "Password",
+
+  "sunav" : "Service unavailable",
+
+  "dashboard" : "Admin area",
+
+  "st_enable_debugmode" : "Debug mode",
+
+  "debug_mode_active" : " - in debug mode",
+
+  "st_enable_offline" : "Offline mode",
+
+  "debug_on" : "On debug mode",
+
+  "offline_on" : "On offline mode",
+
+  "smtp_post" : "Mail SMTP",
+
+  "optional" : "not necessary",
+
+  "enable" : "Enable",
+
+  "md_sett_nfound" : "Not connected modules",
+
+  "fname" : "First name",
+
+  "lname" : "Last name",
+
+  "login" : "Username",
+
+  "changepass_area" : "Change password",
+
+  "old_password" : "Old password",
+
+  "new_password" : "New password",
+
+  "new_password2" : "New password (retype)",
+
+  "upload_new_photo" : "Upload new photo",
+
+  "doban" : "Are you sure want to ban this user?",
+
+  "dounban" : "Are you sure want to unban this user?",
+
+  "show_front" : "Go to the website",
+
+  "sure_remove" : "Are you sure you want to delete this module? To completely remove all the module files must be manually deleted."
+
+}
