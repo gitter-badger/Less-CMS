@@ -13,7 +13,7 @@ else
 @ini_set('display_errors', true);
 @ini_set('html_errors', false);
 define("ROOT", $_SERVER['DOCUMENT_ROOT']);
-define("VERSION", "4.0");
+define("VERSION", "0.5");
 session_start();
 
 function encode($str)
@@ -25,6 +25,11 @@ if ($_POST)
 {
   switch ($_POST['action'])
   {
+    case 'sec_key':
+      $_SESSION['sec'] = $_POST['sec00key'];
+      header("Location: ?step=2");
+      break;
+
     case 'create_bd':
       $_POST['params']['host'] = $_POST['params']['host'] ? : "localhost";
       $_POST['params']['table'] = $_POST['params']['table'] ? : "undefined";
@@ -73,14 +78,14 @@ if ($_POST)
 
     case 'setup_app':
       $fp = fopen(ROOT . "/engine/configs/config.ini", 'w');
-      $fw = "version = \"" . VERSION . "\"\n\nlkey = \"LessCMS-Secure\"\n\ntitle = \"" . $_POST['title'] . "\"\n\ndatabase = \"MySql\"\n\ntemplate = \"Default\"\n\n";
+      $fw = "version = \"" . VERSION . "\"\n\nlkey = \"{$_SESSION['sec']}\"\n\ntitle = \"" . $_POST['title'] . "\"\n\ndatabase = \"MySql\"\n\ntemplate = \"Default\"\n\n";
       fwrite($fp, $fw);
       fclose($fp);
       header("Location: ?step=5");
       break;
 
     case 'remove_intaller':
-      unset($_SESSION['lkey']);
+      unset($_SESSION['sec']);
       unset($_SESSION['dberr']);
       $dir = scandir(ROOT . "/install/assets/");
       foreach($dir as $file)
@@ -143,13 +148,19 @@ else
     $welcome_c = ' class="current"';
     $page = '
       <h2 class="step_title">Server parameters<small>If at least one icon discolored continue not recommend</small></h2>
+      <form method="post">
+      <div class="inrow text-center">
+        <input type="text" name="sec00key" placeholder="Think and write security code here" title="This code is used to encode the user password" required>
+      </div>
       <div class="sv_parameters">
         <div class="param_qube ' . $pstat . '"><i class="mi">code</i> <span> PHP 5.6.0+</span></div>
         <div class="param_qube ' . $mistat . '"><i class="mi">storage</i> <span> MySQLi</span></div>
         <div class="param_qube ' . $upstat . '"><i class="mi">file_upload</i> <span> Files Uploading<small>' . $upstat_t . '</small></span></div>
         <div class="param_qube ' . $safestat . '"><i class="mi">lock_outline</i> <span> Safe Mode<small>' . $safestat_t . '</small></span></div>
       </div>
-        <a href="?step=2" class="continue">Continue</a>';
+        <button class="continue">Continue</button>
+        <input type="hidden" name="action" value="sec_key">
+        </form>';
     break;
 
   case '2':
