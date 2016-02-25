@@ -2,7 +2,7 @@
 
 ###Changelog
 #####Less CMS
-* [07.02.2016] v0.5 - Released
+* [07.02.2016] v0.5.0s - Released
 
 #####CPEngine
 * [13.11.2015] CPEngine - Deprecated
