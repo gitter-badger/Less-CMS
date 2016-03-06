@@ -1,4 +1,4 @@
-<img src="http://www.codeburger.it/banner.jpg">
+<img src="http://www.n3sty.com/extmedia/banner.jpg">
 
 ###Changelog
 #####Less CMS
