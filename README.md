@@ -1,4 +1,4 @@
-<img src="http://www.n3sty.com/extmedia/banner.jpg">
+<a href="http://code.n3sty.com" title="Go to CODE page"><img src="http://www.n3sty.com/extmedia/banner.jpg"></a>
 
 ###Changelog
 #####Less CMS
