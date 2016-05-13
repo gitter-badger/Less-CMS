@@ -1,5 +1,5 @@
-<a href="http://code.n3sty.com" title="Go to CODE page"><img src="https://pp.vk.me/c631627/v631627092/26f5b/qXNoK9nz2eQ.jpg"></a>
-
+<a href="http://www.n3sty.com" title="Go to N3stY site"><img src="https://pp.vk.me/c631627/v631627092/26f5b/qXNoK9nz2eQ.jpg"></a>
+<a href="http://www.n3sty.com/download/less_cms/d1">Get it now</a>
 ###Changelog
 #####Less CMS
 * [13.05.2016] v0.6.0 - Released [BETA]
