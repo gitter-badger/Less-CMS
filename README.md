@@ -2,6 +2,7 @@
 
 ###Changelog
 #####Less CMS
+* [13.05.2016] v0.6.0 - Released [BETA]
 * [12.03.2016] v0.6.0 - In the closed beta testing
 * [15.02.2016] v0.6.0 - On build
 * [07.02.2016] v0.5.0s - Released
