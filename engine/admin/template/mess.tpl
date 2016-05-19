@@ -1,7 +1,13 @@
-<div class="col-md-5 mess">
-  <div class="col-md-12 tiles">
-    <h2>{title}</h2>
-    <p>{text}</p>
-    <a href="{back_link}">{lang-goback}</a>
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{title}</span>
+        <p>{text}</p>
+      </div>
+      <div class="card-action">
+        <a href="{back_link}">{lang-goback}</a>
+      </div>
+    </div>
   </div>
 </div>

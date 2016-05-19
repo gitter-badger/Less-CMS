@@ -5,14 +5,12 @@ if (!defined('LessCMS-Secure')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/err
  */
 class Language
 {
-  var $db;
   var $data;
   var $language;
 
   function __construct()
   {
     $this->data = new stdClass();
-    $this->db   = new MySQL();
   }
 
   function detect()
@@ -24,19 +22,18 @@ class Language
 
   function getData()
   {
-    $this->db->select("extensions", "lang_code = '" . self::detect() . "' AND type = 'langpack'");
-    if(!$this->db->numRows())
+    $GLOBALS['db']->select("extensions", "lang_code = '" . self::detect() . "' AND type = 'langpack'");
+   	$langParam = $GLOBALS['db']->getObject();
+    if(!$GLOBALS['db']->numRows())
  		{
  			$this->data->lang = 'English';
  			$this->data->code = 'en';
  		}
  		else
  		{
- 			$langParam = $this->db->getObject();
  			$this->data->lang = $langParam->title;
  			$this->data->code = mb_strtolower($langParam->lang_code);
  		}
- 		$this->db->free();
  		return $this->data;
   }
 
@@ -70,7 +67,6 @@ class Language
       	}
       }
  		}
-
     $main = (object)$main;
     $this->language = $main;
     return $main;
@@ -87,44 +83,27 @@ class Language
  		{
  			$backLink = '';
  		}
- 		$this->db->select("extensions", "type='langpack'");
-
- 		while($row = $this->db->getObject())
+ 		$GLOBALS['db']->select("extensions", "type='langpack'");
+ 		while($row = $GLOBALS['db']->getObject())
  		{
  			if(mb_strtolower($row->lang_code) == $langCode)
  			{
- 				$result .= '<li class="active">
- 								 <a>
- 								  <i class="mi">label</i>
- 									<span>'.$row->title.'</span>
- 								 </a>
- 							  </li>';
+ 				$result .= '<li class="active"><a><span>'.$row->title.'</span></a></li>';
  			}
  			else
  			{
  				if(AREA == 'frontSide')
  				{
- 					$result .= '<li>
- 						<a href="/index.php?setLang='.$row->lang_code.$backLink.'">
- 							<i class="mi">label</i>
- 							<span>'.$row->title.'</span>
- 						</a>
- 					</li>
+ 					$result .= '<li><a href="/index.php?setLang='.$row->lang_code.$backLink.'"><span>'.$row->title.'</span></a></li>
  					';
  				}
  				elseif(AREA == 'adminSide')
  				{
- 					$result .= '<li>
- 						<a href="/admin.php?setLang='.$row->lang_code.$backLink.'">
- 							<i class="mi">label</i>
- 							<span>'.$row->title.'</span>
- 						</a>
- 					</li>
+ 					$result .= '<li><a href="/admin.php?setLang='.$row->lang_code.$backLink.'"><span>'.$row->title.'</span></a></li>
  					';
  				}
  			}
  		}
- 		$this->db->free();
  		return $result;
  	}
 }

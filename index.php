@@ -10,6 +10,7 @@ else
   @ini_set('error_reporting', E_ALL ^ E_WARNING ^ E_DEPRECATED ^ E_NOTICE);
 }
 
+$meta = "";
 @ini_set('display_errors', true);
 @ini_set('html_errors', false);
 define('LessCMS-Secure', true);
@@ -20,14 +21,16 @@ define('CONFIG', ENGINE . 'configs/');
 define('CORE', ENGINE . 'core/');
 define('DRIVERS', ENGINE . 'drivers/');
 define('UPL', ROOT . 'uploads/');
+date_default_timezone_set("Europe/Berlin");
 session_start();
-if(!file_exists(ROOT."engine/configs/config.ini") || !file_exists(ROOT."engine/configs/drivers/MySql.json"))
+if(!file_exists(ROOT."engine/configs/config.json") || !file_exists(ROOT."engine/configs/drivers/MySql.json"))
  header("Location: /install/install.php");
 $exts = new stdClass();
+$scontent = "";
 include_once ENGINE . "init.php";
 $idmember = $_SESSION['member_id'];
 $logged   = $_SESSION['logged'];
-$_GET = $engine->clean($_GET);
+$meta .= $md_meta;
 
 if(!$_POST['AJAX'])
 {
@@ -43,6 +46,7 @@ if(!$_POST['AJAX'])
     $tpl->set('{langs_list}', $language->makeList());
     $tpl->set('{headers}', $headers);
     $tpl->set('{title}', $siteTitle);
+    $tpl->set('{meta}', $meta);
     $tpl->set('{loginButton}', $login_b);
     $tpl->set('{keywords}', $config->keywords);
     $tpl->set('{THEME}', '/templates/' . $config->template);
@@ -51,10 +55,11 @@ if(!$_POST['AJAX'])
     $tpl->set('{content}', $tpl->result['content']);
     $tpl->set('{login}', $tpl->result['content']);
     $tpl->set('{server_name}', $_SERVER['SERVER_NAME']);
-    $tpl->set('{fb_appid}', $config->fb['app_id']);
-    $tpl->set('{vk_appid}', $config->vk['app_id']);
+    $tpl->set('{fb_appid}', $config->fb->app_id);
+    $tpl->set('{vk_appid}', $config->vk->app_id);
     $tpl->set('{upl}', '/uploads/');
     $tpl->set('{photos}', '/uploads/photos/');
+    $tpl->set('{slider_content}', $scontent);
     $tpl->set('{loading_time}', time() - $_SERVER['REQUEST_TIME']);
     if($config->m_login)
       $tpl->set('{login_mode_inp}', '<input type="text" name="login" placeholder="Username">');

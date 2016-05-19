@@ -18,8 +18,16 @@ class Auth
     switch($mode)
     {
       case 'signin':
-        if($_SESSION["logged"]) return false;
-        if(!$_SESSION["logged"] && empty($_GET['case']))
+        if($_COOKIE['de8f93a28b7d5a9be6b042630fb716fd'] || $_COOKIE['12d38208eda733ca66a6e9089502d8fc'])
+        {
+          if(!$GLOBALS['logged'])
+          {
+            unset($_COOKIE['de8f93a28b7d5a9be6b042630fb716fd']);
+            unset($_COOKIE['12d38208eda733ca66a6e9089502d8fc']);
+          }
+          else return false;
+        }
+        if(!$_COOKIE['de8f93a28b7d5a9be6b042630fb716fd'] || !$_COOKIE['12d38208eda733ca66a6e9089502d8fc'] && empty($_GET['case']))
         {
           $act = self::signIn();
           if($act->error)
@@ -46,12 +54,15 @@ class Auth
 
   private function signIn()
   {
-    if($GLOBALS['config']->m_login)
+    if(!empty($GLOBALS['config']->m_login))
     {
       if(empty($_POST['login']) or empty($_POST['password']))
       {
         $this->return->error = true;
         $this->return->reason = 'Username or password can not be empty!';
+				session_start();
+				$_SESSION["last_err"] = $this->return->reason;
+		    session_write_close();
         return $this->return;
       }
 
@@ -61,11 +72,14 @@ class Auth
         $this->return->reason = 'Username may only consist of letters of the alphabet, numbers and symbols -_.';
         return $this->return;
       }
-      $GLOBALS["db"]->select("members", "login = '".$GLOBALS["db"]->real_escape_string($_POST['login'])."' AND password = '".engine::encode($_POST['password'])."'");
+      $GLOBALS["db"]->select("members", "login = '".$_POST['login']."' AND password = '".engine::encode($_POST['password'])."'");
       if(!$GLOBALS["db"]->numRows())
       {
         $this->return->error = true;
         $this->return->reason = 'Wrong username or password.';
+				session_start();
+				$_SESSION["last_err"] = $this->return->reason;
+		    session_write_close();
         return $this->return;
       }
     }
@@ -75,6 +89,9 @@ class Auth
       {
         $this->return->error = true;
         $this->return->reason = 'Email or password can not be empty!';
+				session_start();
+				$_SESSION["last_err"] = $this->return->reason;
+		    session_write_close();
         return $this->return;
       }
 
@@ -82,29 +99,127 @@ class Auth
       {
         $this->return->error = true;
         $this->return->reason = 'Email may only consist of letters of the alphabet, numbers and symbols -_.@';
+				session_start();
+				$_SESSION["last_err"] = $this->return->reason;
+		    session_write_close();
         return $this->return;
       }
-      $GLOBALS["db"]->select("members", "email = '".$GLOBALS["db"]->real_escape_string($_POST['email'])."' AND password = '".engine::encode($_POST['password'])."'");
+      $GLOBALS["db"]->select("members", "email = '".$_POST['email']."' AND password = '".engine::encode($_POST['password'])."'");
       if(!$GLOBALS["db"]->numRows())
       {
         $this->return->error = true;
         $this->return->reason = 'Wrong email or password.';
+				session_start();
+				$_SESSION["last_err"] = $this->return->reason;
+		    session_write_close();
         return $this->return;
       }
     }
     $row = $GLOBALS["db"]->getObject();
-    $GLOBALS["db"]->free();
-    var_dump($this->reason);
 
     session_start();
     $_SESSION['logged']    = true;
     $_SESSION['member_id'] = $row->id;
     $_SESSION['social']    = false;
     session_write_close();
-    $data['login_hash'] = md5("$row->login::LessCMS-Secure::$row->email::lesscm");
-    setcookie("3e4e7c615a6c1b9ad7fd7d7b4d0fa166", $data['login_hash'], "0", "/", $_SERVER['SERVER_NAME']);
-    $GLOBALS["db"]->update("members", $data, "id='$row->id'");
-    header("Location: /");
+    setcookie("de8f93a28b7d5a9be6b042630fb716fd", $row->id);
+    setcookie("12d38208eda733ca66a6e9089502d8fc", md5($row->login.$GLOBALS['secure_key'].$row->login.$GLOBALS['secure_key'].$row->email));
+    if(basename($_SERVER['SCRIPT_FILENAME']) == "admin.php")
+    {
+      header("Location: /admin.php");
+    }
+    else
+    {
+      header("Location: /");
+    }
+  }
+
+  public function getMemData()
+  {
+    $rsp = new stdClass();
+    unset($_SESSION['tmp_login']);
+    if($GLOBALS['config']->m_login)
+    {
+      if(empty($_POST['login']))
+      {
+        $this->return->error = true;
+        $this->return->reason = 'Username can not be empty!';
+				session_start();
+				$_SESSION["last_err"] = $this->return->reason;
+		    session_write_close();
+        return $this->return;
+      }
+      if(!preg_match("/^[a-zA-Z0-9.-_]+$/",$_POST['login']))
+      {
+        $this->return->error = true;
+        $this->return->reason = 'Username may only consist of letters of the alphabet, numbers and symbols -_.';
+				session_start();
+				$_SESSION["last_err"] = $this->return->reason;
+		    session_write_close();
+        return $this->return;
+      }
+      $GLOBALS["db"]->select("members", "login = '".$_POST['login']."'");
+      $arr = $GLOBALS["db"]->getObject();
+      if(!$GLOBALS["db"]->numRows())
+      {
+        $this->return->error = true;
+        $this->return->reason = 'Wrong username';
+				session_start();
+				$_SESSION["last_err"] = $this->return->reason;
+		    session_write_close();
+        return $this->return;
+      }
+      $_SESSION['tmp_login'] = $arr->email;
+    }
+    else
+    {
+      if(empty($_POST['email']))
+      {
+        $this->return->error = true;
+        $this->return->reason = 'Email can not be empty!';
+				session_start();
+				$_SESSION["last_err"] = $this->return->reason;
+		    session_write_close();
+        return $this->return;
+      }
+      if(!preg_match("/^[a-zA-Z0-9@.-_]+$/",$_POST['email']))
+      {
+        $this->return->error = true;
+        $this->return->reason = 'Email may only consist of letters of the alphabet, numbers and symbols -_.@';
+				session_start();
+				$_SESSION["last_err"] = $this->return->reason;
+		    session_write_close();
+        return $this->return;
+      }
+      $GLOBALS["db"]->select("members", "email = '".$_POST['email']."'");
+      $arr = $GLOBALS["db"]->getObject();
+      if(!$GLOBALS["db"]->numRows())
+      {
+        $this->return->error = true;
+        $this->return->reason = 'Wrong email';
+				session_start();
+				$_SESSION["last_err"] = $this->return->reason;
+		    session_write_close();
+        return $this->return;
+      }
+      $_SESSION['tmp_login'] = $arr->email;
+    }
+    $rsp->success = true;
+    if(empty($arr->fname) && empty($arr->lname))
+    {
+      $rsp->name = $arr->login;
+    }
+    elseif (!empty($arr->fname) && empty($arr->lname))
+    {
+      $rsp->name = $arr->fname . " " . $arr->login;
+    }
+    else
+    {
+      $rsp->name = $arr->fname . " " . $arr->lname;
+    }
+    $rsp->photo = engine::imgExist("uploads/photos/".$arr->avatar);
+    $rsp->email = $_SESSION['tmp_login'];
+    return $rsp;
   }
 
   private function signOut()
@@ -116,10 +231,8 @@ class Auth
     unset($_SESSION["member_id"]);
     unset($_SESSION["social"]);
   	session_write_close();
-    $data['login_hash'] = "";
-    setcookie("3e4e7c615a6c1b9ad7fd7d7b4d0fa166", "");
-    $GLOBALS["db"]->update("members", $data, "id='$id'");
-
+    setcookie("de8f93a28b7d5a9be6b042630fb716fd");
+    setcookie("12d38208eda733ca66a6e9089502d8fc");
     header("Location: /");
   }
 

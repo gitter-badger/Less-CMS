@@ -14,8 +14,6 @@
 
   "signout" : "Sign Out",
 
-  "signup" : "Sign Up",
-
   "success" : "Success",
 
   "error" : "Error",
@@ -32,7 +30,7 @@
 
   "not_found" : "Page not found",
 
-  "goback" : "Go back",
+  "goback" : "Back",
 
   "title" : "Title",
 
@@ -42,57 +40,63 @@
 
   "version" : "Version",
 
-  "hub_version" : "Hub version",
-
-  "install" : "Install",
-
   "cancel" : "Cancel",
 
   "save" : "Save",
 
   "accept" : "Accept",
 
+  "install" : "Install",
+
   "remove" : "Remove",
+
+  "update" : "Update",
 
   "edit" : "Edit",
 
-  "update" : "Update",
+  "installed" : "Extension installed",
+
+  "removed" : "Extension removed",
+
+  "updated" : "Extension updated",
+
+  "proc_error" : "Process error",
+
+  "process" : "Execute...",
 
   "sys_status" : "System status",
 
   "local_stats" : "Server status",
 
-  "local_stats_descr" : "Server state on which the application is deployed",
-
-  "engine_version" : "Engine version",
+  "engine_version" : "CMS version",
 
   "os" : "Server OS",
 
   "updated" : "Updated files:",
 
-  "tupdate" : "To update",
+  "tupdate" : "Files to update",
 
-  "locked" : "Updates blocked",
+  "update_check" : "Check updates",
 
-  "changelog" : "Change Log",
+  "changelog" : "Changelog",
 
-  "system_config" : "Settings",
+  "settings" : "Settings",
 
-  "update_to" : "update to",
+  "update_available" : "New version is available: ",
 
   "st_application" : "Application",
 
   "st_security" : "Security",
 
-  "st_communication" : "Communication",
+  "st_communication" : "Connection",
 
   "st_social" : "Social",
+
+  "st_modules" : "Extensions",
 
   "st_general" : "General",
 
   "st_additional" : "Additional",
-
-  "st_modules" : "Modules",
 
   "st_enable_captcha" : "Enable reCapthca",
 
@@ -100,27 +104,25 @@
 
   "keywords" : "Keywords",
 
-  "domain" : "Domain",
-
-  "lkey" : "License key",
-
   "template" : "Template",
 
-  "captcha_pkey" : "Public key Captcha",
+  "captcha_pkey" : "Public key",
 
-  "captcha_skey" : "Secret key Captcha",
+  "captcha_skey" : "Secret key",
 
-  "smtp_host" : "Server",
+  "smtp_host" : "Host",
 
   "smtp_port" : "Port",
 
-  "smtp_user" : "Username",
+  "smtp_user" : "User",
 
   "smtp_pass" : "Password",
 
-  "smtp_from" : "Email address from",
+  "smtp_from" : "Sender address",
 
-  "smtp_mode" : "Email mode",
+  "smtp_mode" : "Mail mode",
+
+  "secure_mode" : "Encryption mode",
 
   "config_saved" : "Changes saved",
 
@@ -128,13 +130,7 @@
 
   "sdelete" : "Are you sure you want to delete this?",
 
-  "extensionlowed" : "Extension inadmissible",
-
-  "avatar_updated" : "Profile photo updated successfully",
-
-  "filed_uploading" : "Error uploading file",
-
-  "members" : "Members",
+  "members" : "Users",
 
   "add" : "Add",
 
@@ -142,53 +138,39 @@
 
   "notverified" : "Not verified",
 
-  "regedat" : "Registered since",
+  "regedat" : "Member since",
+
+  "day"  :  "Day",
 
   "month"  :  "Month",
 
   "year"  :  "Year",
 
-  "file_not_saved" : "File not saved!",
-
-  "rename" : "Rename",
-
-  "profile_settings" : "Profile settings",
-
-  "fname" : "First name",
-
-  "lname" : "Last name",
-
-  "login" : "Login",
-
-  "email" : "Email",
-
-  "aboutme" : "About me",
-
   "file_perms_error" : "Permissions error.",
 
   "perm_problems" : "File <b>%s</b> must have the permissions \"%d\".",
 
-  "m_file_404" : "File module was not found",
+  "app_id" : "App ID",
 
-  "app_id" : "Application ID",
+  "secure_key" : "Security key",
 
-  "secure_key" : "Secure key",
-
-  "session_locked" : "Session is blocked",
+  "session_locked" : "Session in locked",
 
   "pass_err" : "Wrong password",
 
-  "pass_not_be_empty" : "Password can not be empty <span class=\"name\">(</span>least 4 characters<span class=\"name\">)</span>",
+  "pass_not_be_empty" : "Password can not be empty <span class=\"name\">(</span>(</span> at least 4 characters<span class=\"name\">)</span>",
 
   "welcome" : "Welcome back",
 
-  "block_info" : "To enter the admin panel, type your password",
+  "block_info" : "To continue type the password",
 
   "password" : "Password",
 
-  "sunav" : "Service unavailable",
+  "password2" : "Retype password",
 
-  "dashboard" : "Admin area",
+  "sunav" : "Service is unavailable",
+
+  "dashboard" : "Admin panel",
 
   "st_enable_debugmode" : "Debug mode",
 
@@ -196,23 +178,25 @@
 
   "st_enable_offline" : "Offline mode",
 
-  "debug_on" : "On debug mode",
+  "debug_on" : "In debug mode",
 
-  "offline_on" : "On offline mode",
+  "offline_on" : "In offline mode",
+
+  "st_enable_compcfg" : "Config compress",
 
   "smtp_post" : "Mail SMTP",
 
-  "optional" : "not necessary",
+  "optional" : "optional",
 
   "enable" : "Enable",
 
-  "md_sett_nfound" : "Not connected modules",
+  "md_sett_nfound" : "No installed modules found",
 
   "fname" : "First name",
 
   "lname" : "Last name",
 
-  "login" : "Username",
+  "login" : "Login",
 
   "changepass_area" : "Change password",
 
@@ -220,16 +204,72 @@
 
   "new_password" : "New password",
 
-  "new_password2" : "New password (retype)",
+  "new_password2" : "Retype new password",
+
+  "photo" : "Photo",
 
   "upload_new_photo" : "Upload new photo",
 
-  "doban" : "Are you sure want to ban this user?",
+  "doban" : "Are you sure you want to ban this user?",
 
-  "dounban" : "Are you sure want to unban this user?",
+  "dounban" : "Are you sure you want to unban this user?",
 
-  "show_front" : "Go to the website",
+  "show_front" : "Go to site",
 
-  "sure_remove" : "Are you sure you want to delete this module? To completely remove all the module files must be manually deleted."
+  "sure_remove" : "Are you sure you want to delete this module? To completely remove the need to manually remove all the module files.",
+
+  "latest_installed" : "The current version is up to date",
+
+  "uerror" : "Unknown error",
+
+  "noconnect" : "No connect with API server",
+
+  "changelog_empty" : "Changelog history is not available",
+
+  "inst_newmd" : "Install new extension",
+
+  "upl_newmd" : "Upload ZIP",
+
+  "upexec" : "Engine update execute...",
+
+  "curl_disabled" : "Library <b>cURL</b> is unavailable.<br> Could not update",
+
+  "active" : "Active",
+
+  "disabled" : "Disabled",
+
+  "updsuccess" : "Updated with success!",
+
+  "md_installed" : "Extension is installed",
+
+  "md_installerr" : "Install error",
+
+  "ena" : "invalid extension",
+
+  "fue" : "Upload error",
+
+  "install_mdmess" : "You can install new modules by using this form. Modules from N3stY have a function \"silent install\" and will be installed on their own without any additional dances with a tambourine :)",
+
+  "choose_db" : "Select database",
+
+  "choose_tpl" : "Select template",
+
+  "saved" : "Saved!",
+
+  "saveerr" : "Error",
+
+  "by" : "Author",
+
+  "in" : "in",
+
+  "compcfgmsg" : "Accelerate loading site",
+
+  "debugmsg" : "If something went wrong",
+
+  "offlinemsg" : "Typically used during upgrades",
+
+  "next" : "Next",
+
+  "signtocont" : "Sign In to continue"
 
 }

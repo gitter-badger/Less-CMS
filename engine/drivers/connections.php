@@ -39,38 +39,26 @@ class Connections
     return (object)$result['error'] = true;
   }
 
-  /* ### CodeBurger International ### */
-  /* ################################ */
-  /* # API functions are not public # */
-  /* ################################ */
-  /* ###### www.codeburger.it ####### */
-
-  function getPackage($request, $pname)
+  public function api($request)
   {
-    $archive = @fopen(ROOT . "/uploads/temp/{$pname}.zip", "w");
-    $request['method'] = 'cherryHub';
-    $request['key'] = $GLOBALS['config']->lkey;
+    return self::cGET("http://api.n3sty.com/", $request);
+  }
+
+  public function update()
+  {
+    $mrk = md5(time());
+    $archive = @fopen(ROOT . "/uploads/temp/$mrk.zip", "w");
     $init = curl_init();
     curl_setopt_array($init, array(
-      CURLOPT_URL => "http://api.codeburger.it/?" . urldecode(http_build_query($request)),
+      CURLOPT_URL => "http://api.n3sty.com/?update",
       CURLOPT_HEADER => 0,
       CURLOPT_FILE => $archive
     ));
     $return = curl_exec($init);
     fclose($archive);
     curl_close($init);
-    $back = json_decode($return);
-    if ($json->error)
-    {
-      return $json;
-    }
-    return true;
-  }
-  public function api($request)
-  {
-    $request['key'] = $GLOBALS['config']->lkey;
-    $request['domain'] = $_SERVER['SERVER_NAME'];
-    return self::cGET("http://api.codeburger.it/", $request);
+    if($return) return $mrk;
+    return false;
   }
 }
 $connect = new Connections();

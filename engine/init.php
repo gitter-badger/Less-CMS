@@ -46,7 +46,7 @@ else
         if ($db->numRows())
         {
           $row = $db->getObject();
-          $db->free();
+          
           $module = $row->link;
           if (include ENGINE . "modules/{$row->link}.php")
 

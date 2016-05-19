@@ -1,690 +1,2221 @@
 // out: style.min.css, sourcemap: false, compress: true
-@import url(https://fonts.googleapis.com/css?family=Pacifico);
+.color(@id: "red", @accent: 500) {
+  & when (@id = "red") {
+    & when (@accent = 50) {
+      color: #FFEBEE;
+    }
+    & when (@accent = 100) {
+      color: #FFCDD2;
+    }
+    & when (@accent = 200) {
+      color: #EF9A9A;
+    }
+    & when (@accent = 300) {
+      color: #E57373;
+    }
+    & when (@accent = 400) {
+      color: #EF5350;
+    }
+    & when (@accent = 500) {
+      color: #F44336;
+    }
+    & when (@accent = 600) {
+      color: #E53935;
+    }
+    & when (@accent = 700) {
+      color: #D32F2F;
+    }
+    & when (@accent = 800) {
+      color: #C62828;
+    }
+    & when (@accent = 900) {
+      color: #B71C1C;
+    }
 
-body {
-  overflow-x: hidden;
-}
+    & when (@accent = "A100") {
+      color: #FF8A80;
+    }
+    & when (@accent = "A200") {
+      color: #FF5252;
+    }
+    & when (@accent = "A300") {
+      color: #FF1744;
+    }
+    & when (@accent = "A400") {
+      color: #D50000;
+    }
+  }
+  & when (@id = "pink") {
+    & when (@accent = 50) {
+      color: #FCE4EC;
+    }
+    & when (@accent = 100) {
+      color: #F8BBD0;
+    }
+    & when (@accent = 200) {
+      color: #F48FB1;
+    }
+    & when (@accent = 300) {
+      color: #F06292;
+    }
+    & when (@accent = 400) {
+      color: #EC407A;
+    }
+    & when (@accent = 500) {
+      color: #E91E63;
+    }
+    & when (@accent = 600) {
+      color: #D81B60;
+    }
+    & when (@accent = 700) {
+      color: #C2185B;
+    }
+    & when (@accent = 800) {
+      color: #AD1457;
+    }
+    & when (@accent = 900) {
+      color: #880E4F;
+    }
 
-.update_button {
-  cursor: pointer;
-}
+    & when (@accent = "A100") {
+      color: #FF80AB;
+    }
+    & when (@accent = "A200") {
+      color: #FF4081;
+    }
+    & when (@accent = "A300") {
+      color: #F50057;
+    }
+    & when (@accent = "A400") {
+      color: #C51162;
+    }
+  }
+  & when (@id = "purple") {
+    & when (@accent = 50) {
+      color: #F3E5F5;
+    }
+    & when (@accent = 100) {
+      color: #E1BEE7;
+    }
+    & when (@accent = 200) {
+      color: #CE93D8;
+    }
+    & when (@accent = 300) {
+      color: #BA68C8;
+    }
+    & when (@accent = 400) {
+      color: #AB47BC;
+    }
+    & when (@accent = 500) {
+      color: #9C27B0;
+    }
+    & when (@accent = 600) {
+      color: #8E24AA;
+    }
+    & when (@accent = 700) {
+      color: #7B1FA2;
+    }
+    & when (@accent = 800) {
+      color: #6A1B9A;
+    }
+    & when (@accent = 900) {
+      color: #4A148C;
+    }
 
-.left_side {
-  background: #f1f1f1;
-  display: inline-block;
-  width: 250px;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-}
+    & when (@accent = "A100") {
+      color: #EA80FC;
+    }
+    & when (@accent = "A200") {
+      color: #E040FB;
+    }
+    & when (@accent = "A300") {
+      color: #D500F9;
+    }
+    & when (@accent = "A400") {
+      color: #AA00FF;
+    }
+  }
+  & when (@id = "deep_purple") {
+    & when (@accent = 50) {
+      color: #673AB7;
+    }
+    & when (@accent = 100) {
+      color: #EDE7F6;
+    }
+    & when (@accent = 200) {
+      color: #D1C4E9;
+    }
+    & when (@accent = 300) {
+      color: #B39DDB;
+    }
+    & when (@accent = 400) {
+      color: #9575CD;
+    }
+    & when (@accent = 500) {
+      color: #7E57C2;
+    }
+    & when (@accent = 600) {
+      color: #5E35B1;
+    }
+    & when (@accent = 700) {
+      color: #512DA8;
+    }
+    & when (@accent = 800) {
+      color: #4527A0;
+    }
+    & when (@accent = 900) {
+      color: #311B92;
+    }
 
-.left_side .small_header {
-  height: 71px;
-  padding: 10px 10px;
-  background: #ffffff;
-  border-bottom: solid 1px #E9E9E9;
-  position: relative;
-  span {
-    font-family: "Pacifico";
-    color: #BD4379;
-    font-weight: 700;
-    font-size: 18px;
+    & when (@accent = "A100") {
+      color: #B388FF;
+    }
+    & when (@accent = "A200") {
+      color: #7C4DFF;
+    }
+    & when (@accent = "A300") {
+      color: #651FFF;
+    }
+    & when (@accent = "A400") {
+      color: #6200EA;
+    }
+  }
+  & when (@id = "indigo") {
+    & when (@accent = 50) {
+      color: #E8EAF6;
+    }
+    & when (@accent = 100) {
+      color: #C5CAE9;
+    }
+    & when (@accent = 200) {
+      color: #9FA8DA;
+    }
+    & when (@accent = 300) {
+      color: #7986CB;
+    }
+    & when (@accent = 400) {
+      color: #5C6BC0;
+    }
+    & when (@accent = 500) {
+      color: #3F51B5;
+    }
+    & when (@accent = 600) {
+      color: #3949AB;
+    }
+    & when (@accent = 700) {
+      color: #303F9F;
+    }
+    & when (@accent = 800) {
+      color: #283593;
+    }
+    & when (@accent = 900) {
+      color: #1A237E;
+    }
+
+    & when (@accent = "A100") {
+      color: #8C9EFF;
+    }
+    & when (@accent = "A200") {
+      color: #536DFE;
+    }
+    & when (@accent = "A300") {
+      color: #3D5AFE;
+    }
+    & when (@accent = "A400") {
+      color: #304FFE;
+    }
+  }
+  & when (@id = "blue") {
+    & when (@accent = 50) {
+      color: #E3F2FD;
+    }
+    & when (@accent = 100) {
+      color: #BBDEFB;
+    }
+    & when (@accent = 200) {
+      color: #90CAF9;
+    }
+    & when (@accent = 300) {
+      color: #64B5F6;
+    }
+    & when (@accent = 400) {
+      color: #42A5F5;
+    }
+    & when (@accent = 500) {
+      color: #2196F3;
+    }
+    & when (@accent = 600) {
+      color: #1E88E5;
+    }
+    & when (@accent = 700) {
+      color: #1976D2;
+    }
+    & when (@accent = 800) {
+      color: #1565C0;
+    }
+    & when (@accent = 900) {
+      color: #0D47A1;
+    }
+
+    & when (@accent = "A100") {
+      color: #82B1FF;
+    }
+    & when (@accent = "A200") {
+      color: #448AFF;
+    }
+    & when (@accent = "A300") {
+      color: #2979FF;
+    }
+    & when (@accent = "A400") {
+      color: #2962FF;
+    }
+  }
+  & when (@id = "light_blue") {
+    & when (@accent = 50) {
+      color: #E1F5FE;
+    }
+    & when (@accent = 100) {
+      color: #B3E5FC;
+    }
+    & when (@accent = 200) {
+      color: #81D4FA;
+    }
+    & when (@accent = 300) {
+      color: #4FC3F7;
+    }
+    & when (@accent = 400) {
+      color: #29B6F6;
+    }
+    & when (@accent = 500) {
+      color: #03A9F4;
+    }
+    & when (@accent = 600) {
+      color: #039BE5;
+    }
+    & when (@accent = 700) {
+      color: #0288D1;
+    }
+    & when (@accent = 800) {
+      color: #0277BD;
+    }
+    & when (@accent = 900) {
+      color: #01579B;
+    }
+
+    & when (@accent = "A100") {
+      color: #80D8FF;
+    }
+    & when (@accent = "A200") {
+      color: #40C4FF;
+    }
+    & when (@accent = "A300") {
+      color: #00B0FF;
+    }
+    & when (@accent = "A400") {
+      color: #0091EA;
+    }
+  }
+  & when (@id = "cyan") {
+    & when (@accent = 50) {
+      color: #E0F7FA;
+    }
+    & when (@accent = 100) {
+      color: #B2EBF2;
+    }
+    & when (@accent = 200) {
+      color: #80DEEA;
+    }
+    & when (@accent = 300) {
+      color: #4DD0E1;
+    }
+    & when (@accent = 400) {
+      color: #26C6DA;
+    }
+    & when (@accent = 500) {
+      color: #00BCD4;
+    }
+    & when (@accent = 600) {
+      color: #00ACC1;
+    }
+    & when (@accent = 700) {
+      color: #0097A7;
+    }
+    & when (@accent = 800) {
+      color: #00838F;
+    }
+    & when (@accent = 900) {
+      color: #006064;
+    }
+
+    & when (@accent = "A100") {
+      color: #84FFFF;
+    }
+    & when (@accent = "A200") {
+      color: #18FFFF;
+    }
+    & when (@accent = "A300") {
+      color: #00E5FF;
+    }
+    & when (@accent = "A400") {
+      color: #00B8D4;
+    }
+  }
+  & when (@id = "teal") {
+    & when (@accent = 50) {
+      color: #E0F2F1;
+    }
+    & when (@accent = 100) {
+      color: #B2DFDB;
+    }
+    & when (@accent = 200) {
+      color: #80CBC4;
+    }
+    & when (@accent = 300) {
+      color: #4DB6AC;
+    }
+    & when (@accent = 400) {
+      color: #26A69A;
+    }
+    & when (@accent = 500) {
+      color: #009688;
+    }
+    & when (@accent = 600) {
+      color: #00897B;
+    }
+    & when (@accent = 700) {
+      color: #00796B;
+    }
+    & when (@accent = 800) {
+      color: #00838F;
+    }
+    & when (@accent = 900) {
+      color: #00695C;
+    }
+
+    & when (@accent = "A100") {
+      color: #A7FFEB;
+    }
+    & when (@accent = "A200") {
+      color: #64FFDA;
+    }
+    & when (@accent = "A300") {
+      color: #1DE9B6;
+    }
+    & when (@accent = "A400") {
+      color: #00BFA5;
+    }
+  }
+  & when (@id = "green") {
+    & when (@accent = 50) {
+      color: #E8F5E9;
+    }
+    & when (@accent = 100) {
+      color: #C8E6C9;
+    }
+    & when (@accent = 200) {
+      color: #A5D6A7;
+    }
+    & when (@accent = 300) {
+      color: #81C784;
+    }
+    & when (@accent = 400) {
+      color: #66BB6A;
+    }
+    & when (@accent = 500) {
+      color: #4CAF50;
+    }
+    & when (@accent = 600) {
+      color: #43A047;
+    }
+    & when (@accent = 700) {
+      color: #388E3C;
+    }
+    & when (@accent = 800) {
+      color: #2E7D32;
+    }
+    & when (@accent = 900) {
+      color: #1B5E20;
+    }
+
+    & when (@accent = "A100") {
+      color: #B9F6CA;
+    }
+    & when (@accent = "A200") {
+      color: #69F0AE;
+    }
+    & when (@accent = "A300") {
+      color: #00E676;
+    }
+    & when (@accent = "A400") {
+      color: #00C853;
+    }
+  }
+  & when (@id = "light_green") {
+    & when (@accent = 50) {
+      color: #F1F8E9;
+    }
+    & when (@accent = 100) {
+      color: #DCEDC8;
+    }
+    & when (@accent = 200) {
+      color: #C5E1A5;
+    }
+    & when (@accent = 300) {
+      color: #AED581;
+    }
+    & when (@accent = 400) {
+      color: #9CCC65;
+    }
+    & when (@accent = 500) {
+      color: #8BC34A;
+    }
+    & when (@accent = 600) {
+      color: #7CB342;
+    }
+    & when (@accent = 700) {
+      color: #689F38;
+    }
+    & when (@accent = 800) {
+      color: #558B2F;
+    }
+    & when (@accent = 900) {
+      color: #33691E;
+    }
+
+    & when (@accent = "A100") {
+      color: #CCFF90;
+    }
+    & when (@accent = "A200") {
+      color: #B2FF59;
+    }
+    & when (@accent = "A300") {
+      color: #76FF03;
+    }
+    & when (@accent = "A400") {
+      color: #64DD17;
+    }
+  }
+  & when (@id = "lime") {
+    & when (@accent = 50) {
+      color: #F9FBE7;
+    }
+    & when (@accent = 100) {
+      color: #F0F4C3;
+    }
+    & when (@accent = 200) {
+      color: #E6EE9C;
+    }
+    & when (@accent = 300) {
+      color: #DCE775;
+    }
+    & when (@accent = 400) {
+      color: #D4E157;
+    }
+    & when (@accent = 500) {
+      color: #CDDC39;
+    }
+    & when (@accent = 600) {
+      color: #C0CA33;
+    }
+    & when (@accent = 700) {
+      color: #AFB42B;
+    }
+    & when (@accent = 800) {
+      color: #9E9D24;
+    }
+    & when (@accent = 900) {
+      color: #827717;
+    }
+
+    & when (@accent = "A100") {
+      color: #F4FF81;
+    }
+    & when (@accent = "A200") {
+      color: #EEFF41;
+    }
+    & when (@accent = "A300") {
+      color: #C6FF00;
+    }
+    & when (@accent = "A400") {
+      color: #AEEA00;
+    }
+  }
+  & when (@id = "yellow") {
+    & when (@accent = 50) {
+      color: #FFFDE7;
+    }
+    & when (@accent = 100) {
+      color: #FFF9C4;
+    }
+    & when (@accent = 200) {
+      color: #FFF59D;
+    }
+    & when (@accent = 300) {
+      color: #FFF176;
+    }
+    & when (@accent = 400) {
+      color: #FFEE58;
+    }
+    & when (@accent = 500) {
+      color: #FFEB3B;
+    }
+    & when (@accent = 600) {
+      color: #FDD835;
+    }
+    & when (@accent = 700) {
+      color: #FBC02D;
+    }
+    & when (@accent = 800) {
+      color: #F9A825;
+    }
+    & when (@accent = 900) {
+      color: #F57F17;
+    }
+
+    & when (@accent = "A100") {
+      color: #FFFF8D;
+    }
+    & when (@accent = "A200") {
+      color: #FFFF00;
+    }
+    & when (@accent = "A300") {
+      color: #FFEA00;
+    }
+    & when (@accent = "A400") {
+      color: #FFD600;
+    }
+  }
+  & when (@id = "amber") {
+    & when (@accent = 50) {
+      color: #FFF8E1;
+    }
+    & when (@accent = 100) {
+      color: #FFECB3;
+    }
+    & when (@accent = 200) {
+      color: #FFE082;
+    }
+    & when (@accent = 300) {
+      color: #FFD54F;
+    }
+    & when (@accent = 400) {
+      color: #FFCA28;
+    }
+    & when (@accent = 500) {
+      color: #FFC107;
+    }
+    & when (@accent = 600) {
+      color: #FFB300;
+    }
+    & when (@accent = 700) {
+      color: #FFA000;
+    }
+    & when (@accent = 800) {
+      color: #FF8F00;
+    }
+    & when (@accent = 900) {
+      color: #FF6F00;
+    }
+
+    & when (@accent = "A100") {
+      color: #FFE57F;
+    }
+    & when (@accent = "A200") {
+      color: #FFD740;
+    }
+    & when (@accent = "A300") {
+      color: #FFC400;
+    }
+    & when (@accent = "A400") {
+      color: #FFAB00;
+    }
+  }
+  & when (@id = "ornage") {
+    & when (@accent = 50) {
+      color: #FFF3E0;
+    }
+    & when (@accent = 100) {
+      color: #FFE0B2;
+    }
+    & when (@accent = 200) {
+      color: #FFCC80;
+    }
+    & when (@accent = 300) {
+      color: #FFB74D;
+    }
+    & when (@accent = 400) {
+      color: #FFA726;
+    }
+    & when (@accent = 500) {
+      color: #FF9800;
+    }
+    & when (@accent = 600) {
+      color: #FB8C00;
+    }
+    & when (@accent = 700) {
+      color: #F57C00;
+    }
+    & when (@accent = 800) {
+      color: #EF6C00;
+    }
+    & when (@accent = 900) {
+      color: #E65100;
+    }
+
+    & when (@accent = "A100") {
+      color: #FFD180;
+    }
+    & when (@accent = "A200") {
+      color: #FFAB40;
+    }
+    & when (@accent = "A300") {
+      color: #FF9100;
+    }
+    & when (@accent = "A400") {
+      color: #FF6D00;
+    }
+  }
+  & when (@id = "deep_orange") {
+    & when (@accent = 50) {
+      color: #FBE9E7;
+    }
+    & when (@accent = 100) {
+      color: #FFCCBC;
+    }
+    & when (@accent = 200) {
+      color: #FFAB91;
+    }
+    & when (@accent = 300) {
+      color: #FF8A65;
+    }
+    & when (@accent = 400) {
+      color: #FF7043;
+    }
+    & when (@accent = 500) {
+      color: #FF5722;
+    }
+    & when (@accent = 600) {
+      color: #F4511E;
+    }
+    & when (@accent = 700) {
+      color: #E64A19;
+    }
+    & when (@accent = 800) {
+      color: #D84315;
+    }
+    & when (@accent = 900) {
+      color: #BF360C;
+    }
+
+    & when (@accent = "A100") {
+      color: #FF9E80;
+    }
+    & when (@accent = "A200") {
+      color: #FF6E40;
+    }
+    & when (@accent = "A300") {
+      color: #FF3D00;
+    }
+    & when (@accent = "A400") {
+      color: #DD2C00;
+    }
+  }
+  & when (@id = "brown") {
+    & when (@accent = 50) {
+      color: #EFEBE9;
+    }
+    & when (@accent = 100) {
+      color: #D7CCC8;
+    }
+    & when (@accent = 200) {
+      color: #BCAAA4;
+    }
+    & when (@accent = 300) {
+      color: #A1887F;
+    }
+    & when (@accent = 400) {
+      color: #8D6E63;
+    }
+    & when (@accent = 500) {
+      color: #795548;
+    }
+    & when (@accent = 600) {
+      color: #6D4C41;
+    }
+    & when (@accent = 700) {
+      color: #5D4037;
+    }
+    & when (@accent = 800) {
+      color: #4E342E;
+    }
+    & when (@accent = 900) {
+      color: #3E2723;
+    }
+  }
+  & when (@id = "grey") {
+    & when (@accent = 50) {
+      color: #FAFAFA;
+    }
+    & when (@accent = 100) {
+      color: #F5F5F5;
+    }
+    & when (@accent = 200) {
+      color: #EEEEEE;
+    }
+    & when (@accent = 300) {
+      color: #E0E0E0;
+    }
+    & when (@accent = 400) {
+      color: #BDBDBD;
+    }
+    & when (@accent = 500) {
+      color: #9E9E9E;
+    }
+    & when (@accent = 600) {
+      color: #757575;
+    }
+    & when (@accent = 700) {
+      color: #616161;
+    }
+    & when (@accent = 800) {
+      color: #424242;
+    }
+    & when (@accent = 900) {
+      color: #212121;
+    }
+  }
+  & when (@id = "blue_gray") {
+    & when (@accent = 50) {
+      color: #ECEFF1;
+    }
+    & when (@accent = 100) {
+      color: #CFD8DC;
+    }
+    & when (@accent = 200) {
+      color: #B0BEC5;
+    }
+    & when (@accent = 300) {
+      color: #90A4AE;
+    }
+    & when (@accent = 400) {
+      color: #78909C;
+    }
+    & when (@accent = 500) {
+      color: #607D8B;
+    }
+    & when (@accent = 600) {
+      color: #546E7A;
+    }
+    & when (@accent = 700) {
+      color: #455A64;
+    }
+    & when (@accent = 800) {
+      color: #37474F;
+    }
+    & when (@accent = 900) {
+      color: #263238;
+    }
+  }
+  & when (@id = "wb") {
+    & when (@accent = "black") {
+      color: #000000;
+    }
+    & when (@accent = "white") {
+      color: #FFFFFF;
+    }
   }
 }
+.bg(@id: "red", @accent: 500) {
+  & when (@id = "red") {
+    & when (@accent = 50) {
+      background: #FFEBEE;
+    }
+    & when (@accent = 100) {
+      background: #FFCDD2;
+    }
+    & when (@accent = 200) {
+      background: #EF9A9A;
+    }
+    & when (@accent = 300) {
+      background: #E57373;
+    }
+    & when (@accent = 400) {
+      background: #EF5350;
+    }
+    & when (@accent = 500) {
+      background: #F44336;
+    }
+    & when (@accent = 600) {
+      background: #E53935;
+    }
+    & when (@accent = 700) {
+      background: #D32F2F;
+    }
+    & when (@accent = 800) {
+      background: #C62828;
+    }
+    & when (@accent = 900) {
+      background: #B71C1C;
+    }
 
-.left_side .small_header img {
-  height: : 50px;
+    & when (@accent = "A100") {
+      background: #FF8A80;
+    }
+    & when (@accent = "A200") {
+      background: #FF5252;
+    }
+    & when (@accent = "A300") {
+      background: #FF1744;
+    }
+    & when (@accent = "A400") {
+      background: #D50000;
+    }
+  }
+  & when (@id = "pink") {
+    & when (@accent = 50) {
+      background: #FCE4EC;
+    }
+    & when (@accent = 100) {
+      background: #F8BBD0;
+    }
+    & when (@accent = 200) {
+      background: #F48FB1;
+    }
+    & when (@accent = 300) {
+      background: #F06292;
+    }
+    & when (@accent = 400) {
+      background: #EC407A;
+    }
+    & when (@accent = 500) {
+      background: #E91E63;
+    }
+    & when (@accent = 600) {
+      background: #D81B60;
+    }
+    & when (@accent = 700) {
+      background: #C2185B;
+    }
+    & when (@accent = 800) {
+      background: #AD1457;
+    }
+    & when (@accent = 900) {
+      background: #880E4F;
+    }
+
+    & when (@accent = "A100") {
+      background: #FF80AB;
+    }
+    & when (@accent = "A200") {
+      background: #FF4081;
+    }
+    & when (@accent = "A300") {
+      background: #F50057;
+    }
+    & when (@accent = "A400") {
+      background: #C51162;
+    }
+  }
+  & when (@id = "purple") {
+    & when (@accent = 50) {
+      background: #F3E5F5;
+    }
+    & when (@accent = 100) {
+      background: #E1BEE7;
+    }
+    & when (@accent = 200) {
+      background: #CE93D8;
+    }
+    & when (@accent = 300) {
+      background: #BA68C8;
+    }
+    & when (@accent = 400) {
+      background: #AB47BC;
+    }
+    & when (@accent = 500) {
+      background: #9C27B0;
+    }
+    & when (@accent = 600) {
+      background: #8E24AA;
+    }
+    & when (@accent = 700) {
+      background: #7B1FA2;
+    }
+    & when (@accent = 800) {
+      background: #6A1B9A;
+    }
+    & when (@accent = 900) {
+      background: #4A148C;
+    }
+
+    & when (@accent = "A100") {
+      background: #EA80FC;
+    }
+    & when (@accent = "A200") {
+      background: #E040FB;
+    }
+    & when (@accent = "A300") {
+      background: #D500F9;
+    }
+    & when (@accent = "A400") {
+      background: #AA00FF;
+    }
+  }
+  & when (@id = "deep_purple") {
+    & when (@accent = 50) {
+      background: #673AB7;
+    }
+    & when (@accent = 100) {
+      background: #EDE7F6;
+    }
+    & when (@accent = 200) {
+      background: #D1C4E9;
+    }
+    & when (@accent = 300) {
+      background: #B39DDB;
+    }
+    & when (@accent = 400) {
+      background: #9575CD;
+    }
+    & when (@accent = 500) {
+      background: #7E57C2;
+    }
+    & when (@accent = 600) {
+      background: #5E35B1;
+    }
+    & when (@accent = 700) {
+      background: #512DA8;
+    }
+    & when (@accent = 800) {
+      background: #4527A0;
+    }
+    & when (@accent = 900) {
+      background: #311B92;
+    }
+
+    & when (@accent = "A100") {
+      background: #B388FF;
+    }
+    & when (@accent = "A200") {
+      background: #7C4DFF;
+    }
+    & when (@accent = "A300") {
+      background: #651FFF;
+    }
+    & when (@accent = "A400") {
+      background: #6200EA;
+    }
+  }
+  & when (@id = "indigo") {
+    & when (@accent = 50) {
+      background: #E8EAF6;
+    }
+    & when (@accent = 100) {
+      background: #C5CAE9;
+    }
+    & when (@accent = 200) {
+      background: #9FA8DA;
+    }
+    & when (@accent = 300) {
+      background: #7986CB;
+    }
+    & when (@accent = 400) {
+      background: #5C6BC0;
+    }
+    & when (@accent = 500) {
+      background: #3F51B5;
+    }
+    & when (@accent = 600) {
+      background: #3949AB;
+    }
+    & when (@accent = 700) {
+      background: #303F9F;
+    }
+    & when (@accent = 800) {
+      background: #283593;
+    }
+    & when (@accent = 900) {
+      background: #1A237E;
+    }
+
+    & when (@accent = "A100") {
+      background: #8C9EFF;
+    }
+    & when (@accent = "A200") {
+      background: #536DFE;
+    }
+    & when (@accent = "A300") {
+      background: #3D5AFE;
+    }
+    & when (@accent = "A400") {
+      background: #304FFE;
+    }
+  }
+  & when (@id = "blue") {
+    & when (@accent = 50) {
+      background: #E3F2FD;
+    }
+    & when (@accent = 100) {
+      background: #BBDEFB;
+    }
+    & when (@accent = 200) {
+      background: #90CAF9;
+    }
+    & when (@accent = 300) {
+      background: #64B5F6;
+    }
+    & when (@accent = 400) {
+      background: #42A5F5;
+    }
+    & when (@accent = 500) {
+      background: #2196F3;
+    }
+    & when (@accent = 600) {
+      background: #1E88E5;
+    }
+    & when (@accent = 700) {
+      background: #1976D2;
+    }
+    & when (@accent = 800) {
+      background: #1565C0;
+    }
+    & when (@accent = 900) {
+      background: #0D47A1;
+    }
+
+    & when (@accent = "A100") {
+      background: #82B1FF;
+    }
+    & when (@accent = "A200") {
+      background: #448AFF;
+    }
+    & when (@accent = "A300") {
+      background: #2979FF;
+    }
+    & when (@accent = "A400") {
+      background: #2962FF;
+    }
+  }
+  & when (@id = "light_blue") {
+    & when (@accent = 50) {
+      background: #E1F5FE;
+    }
+    & when (@accent = 100) {
+      background: #B3E5FC;
+    }
+    & when (@accent = 200) {
+      background: #81D4FA;
+    }
+    & when (@accent = 300) {
+      background: #4FC3F7;
+    }
+    & when (@accent = 400) {
+      background: #29B6F6;
+    }
+    & when (@accent = 500) {
+      background: #03A9F4;
+    }
+    & when (@accent = 600) {
+      background: #039BE5;
+    }
+    & when (@accent = 700) {
+      background: #0288D1;
+    }
+    & when (@accent = 800) {
+      background: #0277BD;
+    }
+    & when (@accent = 900) {
+      background: #01579B;
+    }
+
+    & when (@accent = "A100") {
+      background: #80D8FF;
+    }
+    & when (@accent = "A200") {
+      background: #40C4FF;
+    }
+    & when (@accent = "A300") {
+      background: #00B0FF;
+    }
+    & when (@accent = "A400") {
+      background: #0091EA;
+    }
+  }
+  & when (@id = "cyan") {
+    & when (@accent = 50) {
+      background: #E0F7FA;
+    }
+    & when (@accent = 100) {
+      background: #B2EBF2;
+    }
+    & when (@accent = 200) {
+      background: #80DEEA;
+    }
+    & when (@accent = 300) {
+      background: #4DD0E1;
+    }
+    & when (@accent = 400) {
+      background: #26C6DA;
+    }
+    & when (@accent = 500) {
+      background: #00BCD4;
+    }
+    & when (@accent = 600) {
+      background: #00ACC1;
+    }
+    & when (@accent = 700) {
+      background: #0097A7;
+    }
+    & when (@accent = 800) {
+      background: #00838F;
+    }
+    & when (@accent = 900) {
+      background: #006064;
+    }
+
+    & when (@accent = "A100") {
+      background: #84FFFF;
+    }
+    & when (@accent = "A200") {
+      background: #18FFFF;
+    }
+    & when (@accent = "A300") {
+      background: #00E5FF;
+    }
+    & when (@accent = "A400") {
+      background: #00B8D4;
+    }
+  }
+  & when (@id = "teal") {
+    & when (@accent = 50) {
+      background: #E0F2F1;
+    }
+    & when (@accent = 100) {
+      background: #B2DFDB;
+    }
+    & when (@accent = 200) {
+      background: #80CBC4;
+    }
+    & when (@accent = 300) {
+      background: #4DB6AC;
+    }
+    & when (@accent = 400) {
+      background: #26A69A;
+    }
+    & when (@accent = 500) {
+      background: #009688;
+    }
+    & when (@accent = 600) {
+      background: #00897B;
+    }
+    & when (@accent = 700) {
+      background: #00796B;
+    }
+    & when (@accent = 800) {
+      background: #00838F;
+    }
+    & when (@accent = 900) {
+      background: #00695C;
+    }
+
+    & when (@accent = "A100") {
+      background: #A7FFEB;
+    }
+    & when (@accent = "A200") {
+      background: #64FFDA;
+    }
+    & when (@accent = "A300") {
+      background: #1DE9B6;
+    }
+    & when (@accent = "A400") {
+      background: #00BFA5;
+    }
+  }
+  & when (@id = "green") {
+    & when (@accent = 50) {
+      background: #E8F5E9;
+    }
+    & when (@accent = 100) {
+      background: #C8E6C9;
+    }
+    & when (@accent = 200) {
+      background: #A5D6A7;
+    }
+    & when (@accent = 300) {
+      background: #81C784;
+    }
+    & when (@accent = 400) {
+      background: #66BB6A;
+    }
+    & when (@accent = 500) {
+      background: #4CAF50;
+    }
+    & when (@accent = 600) {
+      background: #43A047;
+    }
+    & when (@accent = 700) {
+      background: #388E3C;
+    }
+    & when (@accent = 800) {
+      background: #2E7D32;
+    }
+    & when (@accent = 900) {
+      background: #1B5E20;
+    }
+
+    & when (@accent = "A100") {
+      background: #B9F6CA;
+    }
+    & when (@accent = "A200") {
+      background: #69F0AE;
+    }
+    & when (@accent = "A300") {
+      background: #00E676;
+    }
+    & when (@accent = "A400") {
+      background: #00C853;
+    }
+  }
+  & when (@id = "light_green") {
+    & when (@accent = 50) {
+      background: #F1F8E9;
+    }
+    & when (@accent = 100) {
+      background: #DCEDC8;
+    }
+    & when (@accent = 200) {
+      background: #C5E1A5;
+    }
+    & when (@accent = 300) {
+      background: #AED581;
+    }
+    & when (@accent = 400) {
+      background: #9CCC65;
+    }
+    & when (@accent = 500) {
+      background: #8BC34A;
+    }
+    & when (@accent = 600) {
+      background: #7CB342;
+    }
+    & when (@accent = 700) {
+      background: #689F38;
+    }
+    & when (@accent = 800) {
+      background: #558B2F;
+    }
+    & when (@accent = 900) {
+      background: #33691E;
+    }
+
+    & when (@accent = "A100") {
+      background: #CCFF90;
+    }
+    & when (@accent = "A200") {
+      background: #B2FF59;
+    }
+    & when (@accent = "A300") {
+      background: #76FF03;
+    }
+    & when (@accent = "A400") {
+      background: #64DD17;
+    }
+  }
+  & when (@id = "lime") {
+    & when (@accent = 50) {
+      background: #F9FBE7;
+    }
+    & when (@accent = 100) {
+      background: #F0F4C3;
+    }
+    & when (@accent = 200) {
+      background: #E6EE9C;
+    }
+    & when (@accent = 300) {
+      background: #DCE775;
+    }
+    & when (@accent = 400) {
+      background: #D4E157;
+    }
+    & when (@accent = 500) {
+      background: #CDDC39;
+    }
+    & when (@accent = 600) {
+      background: #C0CA33;
+    }
+    & when (@accent = 700) {
+      background: #AFB42B;
+    }
+    & when (@accent = 800) {
+      background: #9E9D24;
+    }
+    & when (@accent = 900) {
+      background: #827717;
+    }
+
+    & when (@accent = "A100") {
+      background: #F4FF81;
+    }
+    & when (@accent = "A200") {
+      background: #EEFF41;
+    }
+    & when (@accent = "A300") {
+      background: #C6FF00;
+    }
+    & when (@accent = "A400") {
+      background: #AEEA00;
+    }
+  }
+  & when (@id = "yellow") {
+    & when (@accent = 50) {
+      background: #FFFDE7;
+    }
+    & when (@accent = 100) {
+      background: #FFF9C4;
+    }
+    & when (@accent = 200) {
+      background: #FFF59D;
+    }
+    & when (@accent = 300) {
+      background: #FFF176;
+    }
+    & when (@accent = 400) {
+      background: #FFEE58;
+    }
+    & when (@accent = 500) {
+      background: #FFEB3B;
+    }
+    & when (@accent = 600) {
+      background: #FDD835;
+    }
+    & when (@accent = 700) {
+      background: #FBC02D;
+    }
+    & when (@accent = 800) {
+      background: #F9A825;
+    }
+    & when (@accent = 900) {
+      background: #F57F17;
+    }
+
+    & when (@accent = "A100") {
+      background: #FFFF8D;
+    }
+    & when (@accent = "A200") {
+      background: #FFFF00;
+    }
+    & when (@accent = "A300") {
+      background: #FFEA00;
+    }
+    & when (@accent = "A400") {
+      background: #FFD600;
+    }
+  }
+  & when (@id = "amber") {
+    & when (@accent = 50) {
+      background: #FFF8E1;
+    }
+    & when (@accent = 100) {
+      background: #FFECB3;
+    }
+    & when (@accent = 200) {
+      background: #FFE082;
+    }
+    & when (@accent = 300) {
+      background: #FFD54F;
+    }
+    & when (@accent = 400) {
+      background: #FFCA28;
+    }
+    & when (@accent = 500) {
+      background: #FFC107;
+    }
+    & when (@accent = 600) {
+      background: #FFB300;
+    }
+    & when (@accent = 700) {
+      background: #FFA000;
+    }
+    & when (@accent = 800) {
+      background: #FF8F00;
+    }
+    & when (@accent = 900) {
+      background: #FF6F00;
+    }
+
+    & when (@accent = "A100") {
+      background: #FFE57F;
+    }
+    & when (@accent = "A200") {
+      background: #FFD740;
+    }
+    & when (@accent = "A300") {
+      background: #FFC400;
+    }
+    & when (@accent = "A400") {
+      background: #FFAB00;
+    }
+  }
+  & when (@id = "ornage") {
+    & when (@accent = 50) {
+      background: #FFF3E0;
+    }
+    & when (@accent = 100) {
+      background: #FFE0B2;
+    }
+    & when (@accent = 200) {
+      background: #FFCC80;
+    }
+    & when (@accent = 300) {
+      background: #FFB74D;
+    }
+    & when (@accent = 400) {
+      background: #FFA726;
+    }
+    & when (@accent = 500) {
+      background: #FF9800;
+    }
+    & when (@accent = 600) {
+      background: #FB8C00;
+    }
+    & when (@accent = 700) {
+      background: #F57C00;
+    }
+    & when (@accent = 800) {
+      background: #EF6C00;
+    }
+    & when (@accent = 900) {
+      background: #E65100;
+    }
+
+    & when (@accent = "A100") {
+      background: #FFD180;
+    }
+    & when (@accent = "A200") {
+      background: #FFAB40;
+    }
+    & when (@accent = "A300") {
+      background: #FF9100;
+    }
+    & when (@accent = "A400") {
+      background: #FF6D00;
+    }
+  }
+  & when (@id = "deep_orange") {
+    & when (@accent = 50) {
+      background: #FBE9E7;
+    }
+    & when (@accent = 100) {
+      background: #FFCCBC;
+    }
+    & when (@accent = 200) {
+      background: #FFAB91;
+    }
+    & when (@accent = 300) {
+      background: #FF8A65;
+    }
+    & when (@accent = 400) {
+      background: #FF7043;
+    }
+    & when (@accent = 500) {
+      background: #FF5722;
+    }
+    & when (@accent = 600) {
+      background: #F4511E;
+    }
+    & when (@accent = 700) {
+      background: #E64A19;
+    }
+    & when (@accent = 800) {
+      background: #D84315;
+    }
+    & when (@accent = 900) {
+      background: #BF360C;
+    }
+
+    & when (@accent = "A100") {
+      background: #FF9E80;
+    }
+    & when (@accent = "A200") {
+      background: #FF6E40;
+    }
+    & when (@accent = "A300") {
+      background: #FF3D00;
+    }
+    & when (@accent = "A400") {
+      background: #DD2C00;
+    }
+  }
+  & when (@id = "brown") {
+    & when (@accent = 50) {
+      background: #EFEBE9;
+    }
+    & when (@accent = 100) {
+      background: #D7CCC8;
+    }
+    & when (@accent = 200) {
+      background: #BCAAA4;
+    }
+    & when (@accent = 300) {
+      background: #A1887F;
+    }
+    & when (@accent = 400) {
+      background: #8D6E63;
+    }
+    & when (@accent = 500) {
+      background: #795548;
+    }
+    & when (@accent = 600) {
+      background: #6D4C41;
+    }
+    & when (@accent = 700) {
+      background: #5D4037;
+    }
+    & when (@accent = 800) {
+      background: #4E342E;
+    }
+    & when (@accent = 900) {
+      background: #3E2723;
+    }
+  }
+  & when (@id = "grey") {
+    & when (@accent = 50) {
+      background: #FAFAFA;
+    }
+    & when (@accent = 100) {
+      background: #F5F5F5;
+    }
+    & when (@accent = 200) {
+      background: #EEEEEE;
+    }
+    & when (@accent = 300) {
+      background: #E0E0E0;
+    }
+    & when (@accent = 400) {
+      background: #BDBDBD;
+    }
+    & when (@accent = 500) {
+      background: #9E9E9E;
+    }
+    & when (@accent = 600) {
+      background: #757575;
+    }
+    & when (@accent = 700) {
+      background: #616161;
+    }
+    & when (@accent = 800) {
+      background: #424242;
+    }
+    & when (@accent = 900) {
+      background: #212121;
+    }
+  }
+  & when (@id = "blue_gray") {
+    & when (@accent = 50) {
+      background: #ECEFF1;
+    }
+    & when (@accent = 100) {
+      background: #CFD8DC;
+    }
+    & when (@accent = 200) {
+      background: #B0BEC5;
+    }
+    & when (@accent = 300) {
+      background: #90A4AE;
+    }
+    & when (@accent = 400) {
+      background: #78909C;
+    }
+    & when (@accent = 500) {
+      background: #607D8B;
+    }
+    & when (@accent = 600) {
+      background: #546E7A;
+    }
+    & when (@accent = 700) {
+      background: #455A64;
+    }
+    & when (@accent = 800) {
+      background: #37474F;
+    }
+    & when (@accent = 900) {
+      background: #263238;
+    }
+  }
+  & when (@id = "wb") {
+    & when (@accent = "black") {
+      background: #000000;
+    }
+    & when (@accent = "white") {
+      background: #FFFFFF;
+    }
+  }
 }
-
-.left_side .small_header i {
-  position: absolute;
-  right: 20px;
-  top: 5px;
-  font-size: 35px;
-  cursor: default;
-}
-
-.left_side .small_header i.debug {
-  transform: rotate(-35deg);
-  color: #FF9800;
-}
-
-.left_side .small_header i.offline {
-  color: #3F51B5;
-}
-
-.left_side .menu_list {
-  border-right: solid 1px #E9E9E9;
-  height: calc(29%);
-  height: 596px;
-}
-
-.main_side {
-  background: #f8f8f8;
-  display: inline-block;
-  width: calc(-150%);
-  width: 1116px;
-  min-height: 100%;
-  margin-left: 250px;
-}
-
-.header {
-  background: #ffffff;
-  height: 71px;
-  border-bottom: solid 1px #E9E9E9;
-  cursor: default;
-  font-size: 18px;
-}
-
-.header .hright {
-  float: right;
-  padding: 20.5px 0;
-  padding-right: 10px;
-}
-
-.header .hright a {
-  display: inline-block;
-  height: 30px;
-  text-align: center;
-  text-decoration: none;
-  line-height: 30px;
-  padding: 0 5px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #535865;
-}
-
-.header .hright a:hover {
-  color: #AD1457;
-}
-
-.header .hright .member {
-  text-align: left;
-  padding: 0 15px;
+@theme: #9CCC65;
+@border: #E8ECEB;
+@primary_text: #535865;
+@secondary_text: #8f95a3;
+/* @theme = .color("light_green", 400) */
+.mi {
+  position: relative;
+  bottom: -2px;
   font-size: 14px;
 }
-
-.header .hright .member i {
-  width: 20px;
-  text-align: center;
-  font-size: 18px;
-  bottom: -3px;
+body {
+  background: #F5F5F5;
 }
-
-.header .hright .dp_holder {
-  position: relative;
-}
-
-.menu_list ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.menu_list ul .active a {
-  background: #AD1457;
-  color: #ffffff;
-}
-
-.menu_list ul .active a:hover {
-  background: #AD1457;
-}
-
-.menu_list ul a {
-  padding: 0 10px;
-  display: block;
-  height: 40px;
-  line-height: 40px;
-  text-decoration: none;
-  color: #535865;
-}
-
-.menu_list ul a:hover {
-  background: #C2185B;
-  color: #ffffff;
-}
-
-.menu_list ul i {
-  width: 20px;
-  text-align: center;
-  margin-right: 5px;
-}
-
-.tiles {
-  background: #ffffff;
-  border: solid 1px #E9E9E9;
-  border-radius: 1px;
-  margin-top: 15px;
-  padding: 0 15px;
-  overflow: hidden;
-}
-
-.npad {
-  padding: 0 !important;
-}
-
-.dp_holder.open .dp_menu {
-  display: block;
-}
-
-.dp_menu {
-  background: #ffffff;
-  display: none;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19),0 6px 6px rgba(0,0,0,0.23);
-  position: absolute;
-  z-index: 999999999;
-  float: right;
-  right: 0;
-  top: -5px;
+th, td {
+  word-break: keep-all;
   width: auto;
-  min-width: 200px;
 }
-
-.dp_menu .dp_header {
-  display: inline-block;
-  height: 40px;
-  color: #ffffff;
-  background: #AD1457;
-  line-height: 40px;
-  padding: 0 15px;
-  width: 100%;
-  text-transform: uppercase;
-  font-weight: 700;
+.table_links {
+  text-align: right;
+  a {
+    margin-bottom: 5px;
+  }
 }
-
-.dp_menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.dp_menu ul .active a {
-  background: #E9E9E9;
-  color: #AD1457;
-}
-
-.dp_menu ul .active a:hover {
-  background: #E9E9E9;
-  color: #AD1457 !important;
-  cursor: not-allowed;
-}
-
-.dp_menu ul a {
-  display: block !important;
-  padding: 5px 10px !important;
-  text-align: left !important;
-  line-height: normal !important;
-  color: #535865;
-}
-
-.dp_menu ul a i {
-  width: 20px;
-  margin-right: 5px;
-  text-align: center;
-}
-
-.dp_menu ul a:hover {
-  color: #ffffff !important;
-  background: #D81B60;
-}
-
-.profile_head {
-  padding: 40px;
-  display: inline-block;
-  min-height: 100px;
-  position: relative;
-  width: 100%;
-}
-
-.profile_head .p_photo {
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-  margin-right: 40px;
-  float: left;
-  border-radius: 2px;
-}
-
-.profile_head .p_photo img {
-  width: 100%;
-}
-
-.profile_head .ps_info {
-  display: inline-block;
-}
-
-.profile_head .ps_info .p_name {
-  font-family: 'Pacifico';
-  font-size: 25px;
-  color: #535865;
-}
-
-.profile_head .ps_info .p_name a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.profile_head .ps_info .p_name a:hover {
-  color: #EC407A;
-}
-
-.profile_head .ps_info .p_name small {
-  color: #AD1457;
-  padding-left: 5px;
-}
-
-.profile_head .ps_info .p_description {
-  color: #8f95a3;
-  font-size: 12px;
-  max-width: 300px;
-}
-
-.profile_head .action_btns {
-  position: absolute;
-  right: 40px;
-  top: 40px;
-}
-
-.profile_head .action_btns a {
-  display: block;
-  text-decoration: none;
-  text-align: center;
-  height: 40px;
-  width: 40px;
-  line-height: 40px;
-  border: none;
-  background: #D81B60;
-  color: #ffffff;
-  border-radius: 2px;
-  margin-top: 10px;
-}
-
-.profile_head .action_btns a i {
-  width: 40px;
-  text-align: center;
-  height: 40px;
-  line-height: 40px;
-  bottom: 0;
-}
-
-.profile_head .action_btns a.unban {
-  background: #bbbfc7;
-  color: #535865;
-}
-
-.profile_head .action_btns a.unban:hover {
-  background: #a5aab5;
-}
-
-.profile_head .action_btns a.unban:active {
-  background: #8f95a3;
-}
-
-.profile_head .action_btns a:hover {
-  background: #C2185B;
-}
-
-.profile_head .action_btns a:active {
-  background: #AD1457;
-}
-
-.profile_head .action_btns a:first-child {
-  margin-top: 0;
-}
-
 .inrow {
-  padding: 5px 0;
-  overflow: hidden;
-  min-height: 36px;
-  line-height: 36px;
+  padding: 4px 0;
+  &.cb {
+    label.active {
+      left: 0;
+    }
+    margin-left: 23px !important;
+  }
 }
-
-.inrow label {
-  display: block;
-  font-weight: 700;
-  color: #535865;
+#menu_left {
+  box-shadow: none !important;
+  border-right: solid 1px @border;
+  z-index: 997;
+  li {
+    width: 100%;
+  }
+  .menu_list {
+    display: none;
+  }
+  .logo {
+    .bg("light_green", 400);
+    text-align: center;
+    height: 70px;
+  }
+  .avatar {
+    .bg("light_green", 400);
+    text-align: center;
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+  }
+  .name {
+    .bg("light_green", 400);
+    text-align: center;
+    >a {
+      color: #fff;
+    }
+  }
+  a {
+    color: @primary_text;
+    line-height: 64px;
+  }
 }
-
-.inrow span {
-  padding: 0 10px;
-  min-width: 150px;
-  text-align: left;
-  display: inline-block;
-  color: #8f95a3;
+.navbar-fixed {
+  z-index: 996;
 }
-
-.inrow input,.inrow select {
-  height: 36px;
-  border-radius: 4px;
-  border: solid 2px #E9E9E9;
-  width: 350px;
-  outline: none;
-  padding: 0 10px;
-  color: #535865;
-}
-
-.inrow input:focus,.inrow select:focus {
-  border-color: #AD1457;
-}
-
-.inrow button {
-  height: 40px;
-  min-width: 150px;
-  border: none;
-  background: #D81B60;
-  color: #ffffff;
-  border-radius: 2px;
-  margin-top: 10px;
-}
-
-.inrow button:hover {
-  background: #C2185B;
-}
-
-.inrow button:active {
-  background: #AD1457;
-}
-
-.cp_tabs {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border-bottom: solid 3px #E9E9E9;
-  cursor: default;
-}
-
-.cp_tabs li {
-  display: inline-block;
-}
-
-.cp_tabs li a {
-  display: block;
-  height: 50px;
-  line-height: 50px;
-  padding: 0 15px;
-  border-bottom: solid 3px transparent;
-  margin-right: -5px;
-  text-decoration: none !important;
-  color: #8f95a3;
-  margin-bottom: -3px;
-}
-
-.cp_tabs li a i {
-  width: 20px;
-  text-align: center;
-}
-
-.cp_tabs li a:hover {
-  border-bottom-color: #D81B60;
-  color: #535865;
-}
-
-.cp_tabs li a:hover i {
-  color: #D81B60;
-}
-
-.cp_tabs li.active a {
-  border-bottom-color: #AD1457;
-  color: #535865;
-}
-
-.cp_tabs li.active a i {
-  color: #AD1457;
-}
-
-.tab-pane {
-  padding: 15px 15px 0 15px;
-}
-
-.tab-pane label {
-  display: block;
-  margin-bottom: 7px;
-  color: #535865;
-}
-
-.tab-pane label i {
-  width: 20px;
-  text-align: center;
-  color: #AD1457;
-}
-
-.switch {
-  height: 10px;
-  position: relative;
-  display: inline-block;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.switch div {
-  width: 50px;
-  height: 15px;
-  position: absolute;
-}
-
-.switch div input {
-  display: none;
-}
-
-.lbl {
-  position: relative;
-  display: block;
+.header {
+  height: 71px;
+  line-height: 71px;
   width: 100%;
-  height: 100%;
-  border-radius: 30px;
-  background-color: #BDBDBD;
-  cursor: pointer;
-}
-
-.lbl::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  display: block;
-  width: 25px;
-  height: 25px;
-  background: #9E9E9E;
-  margin: -5px;
-  border-radius: 50%;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16),0 3px 6px rgba(0,0,0,0.23);
-}
-
-.swinp:checked+.lbl {
-  background-color: #F8BBD0;
-}
-
-.swinp:checked+.lbl::before {
-  background: #AD1457;
-}
-
-.swinp:checked+.lbl::before {
-  right: 0;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  -o-box-shadow: none;
+  background: #ffffff;
+  position: relative;
+  border-bottom: solid 1px @border;
   box-shadow: none;
+  a {
+    color: @primary_text !important;
+  }
+  .brand-logo {
+    display: none;
+    img {
+      height: 100%;
+    }
+  }
+  .menu_call {
+    float: left;
+    width: 71px !important;
+    height: 71px !important;
+    color: @theme !important;
+    z-index: 997;
+    display: block !important;
+    cursor: pointer;
+    i {
+      width: 71px !important;
+      height: 71px !important;
+      line-height: 71px !important;
+      text-align: center;
+      font-size: 35px;
+    }
+    &#show_right {
+      float: right;
+      padding: 0;
+    }
+  }
 }
-
-.changelog_header {
-  margin-bottom: 5px;
+.breadcrumbs {
+  padding-left: 250px;
+  line-height: 40px !important;
+  height: 40px !important;
+  margin-top: 7px;
+  font-size: 12px !important;
+  .bg("light_green", 50);
+  border-bottom: solid 1px @border;
+  box-shadow: none;
+  a {
+    .color("light_green", 300);
+    &::before {
+      .color("light_green",200);
+    }
+    &:last-child {
+      .color("light_green",400);
+      font-weight: 700;
+    }
+  }
 }
-
-.changelog_header h2 {
-  color: #535865;
+.main_container {
+  margin-left: 240px;
+  padding: 12px;
 }
-
-.changelog_header small {
-  color: #8f95a3;
-  display: block;
-  padding-bottom: 5px;
+.notif {
+  min-height: 50px;
+  padding: 0 !important;
+  padding-left: 60px !important;
+  line-height: 50px;
+  position: relative;
+  font-weight: 600;
+  color: @theme;
+  i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #66BB6A;
+    line-height: 50px;
+    height: 50px;
+    width: 50px;
+    bottom: 0;
+    text-align: center;
+    color: #ffffff;
+    font-size: 25px;
+  }
+   a {
+     display: block;
+     float: right;
+     margin: 10px 24px;
+     height: 30px;
+     line-height: 30px;
+     border: solid 1px @theme;
+     padding: 0 16px;
+     color: @theme;
+     text-decoration: none;
+     font-weight: 400;
+     text-transform: uppercase;
+     &:hover {
+       border-color: @theme;
+     }
+     &:active {
+       border-color: @theme;
+       color: @theme;
+     }
+   }
 }
-
+.tile {
+  margin: 12px;
+  background: #fff;
+  border: solid 1px @border;
+}
+.light-green {
+  .card-action {
+    a {
+      .color("light_green", 900) !important;
+      &:hover {
+        .color("light_green", 800) !important;
+      }
+      &:active {
+        .color("light_green", 700) !important;
+      }
+    }
+  }
+}
+.card-head {
+  height: 150px;
+  max-height: 150px;
+  line-height: 150px;
+  text-align: center;
+  div {
+    font-size: 18pt;
+  }
+  a {
+    top: -18%;
+    right: 24px;
+  }
+}
 .changelog {
-  max-height: 350px;
+  padding: 24px;
+  color: @primary_text;
   overflow-x: hidden;
   overflow-y: auto;
-  margin-bottom: 15px;
+  max-height: 500px;
 }
-
-.changelog strong {
-  display: block;
+.sp_row {
+  min-height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  color: @primary_text;
+  padding-left: 10px;
+  border-top: solid 1px @border;
+  &:hover {
+    background: lighten(@border, 5%);
+  }
+  &.warning {
+    background: #FFA726;
+    color: #ffffff;
+  }
+  &.error {
+    background: #EF5350;
+    color: #ffffff;
+  }
+  i {
+    width: 25px;
+  }
+  b {
+    width: 150px;
+    font-weight: 400;
+    display: inline-block;
+  }
+}
+.changelist {
+  max-height: 350px;
+  height: auto;
+  strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: @primary_text;
+  }
+  span {
+    display: block;
+    font-size: 14px;
+    margin-left: 5px;
+    color: @secondary_text;
+    word-break: normal;
+    display: table;
+    width: 100%;
+    &::before {
+     font-family: 'Material Icons';
+     font-weight: normal;
+     font-style: normal;
+     font-size: 14px;
+     line-height: 1;
+     letter-spacing: normal;
+     text-transform: none;
+     display: inline-block;
+     white-space: nowrap;
+     word-wrap: normal;
+     direction: ltr;
+     -webkit-font-feature-settings: 'liga';
+     -webkit-font-smoothing: antialiased;
+     position: relative;
+     bottom: -2px;
+     width: 20px;
+     .color("light_green");
+     content: "label";
+    }
+  }
+}
+.section_devider {
+  padding: 8px 0;
+  font-size: 18px;
+  color: @primary_text;
+  i {
+    font-size: inherit;
+    width: 25px;
+    color: @theme;
+  }
+}
+.swinp {
+  padding: 2.5px 0 !important;
+}
+.tabs {
+  .indicator  {
+    background-color: @theme;
+  }
+  .tab {
+    &.disabled {
+      a {
+        .color("light_green", 100);
+        &:hover {
+          .color("light_green", 100);
+        }
+        i {
+          width: 25px;
+        }
+      }
+    }
+    a {
+      color: @theme;
+      &:hover {
+        .color("light_green", 200);
+      }
+      i {
+        width: 25px;
+      }
+    }
+  }
+}
+.member {
+  text-align: center;
+  img {
+    width: 100%;
+  }
+  .mname {
+    padding-top: 12px;
+    color: @primary_text;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .butts {
+    a {
+      width: 150px;
+      display: block;
+      margin: 10px auto;
+    }
+  }
+}
+.mini_profile {
+  text-align: center;
   font-weight: 700;
+  font-size: 25px;
+  color: @primary_text;
+  img {
+    width: 120px;
+  }
+  div {
+    padding-top: 24px;
+    > div {
+      padding-top: 10px;
+      font-size: 14px;
+      color: @secondary_text;
+      i {
+        width: 25px;
+        height: 15px;
+        color: @theme;
+      }
+    }
+  }
 }
-
-.changelog span {
-  display: block;
-}
-
-.changelog i {
-  width: 20px;
-  text-align: center;
-  margin-right: 5px;
-}
-
-.cherryhub {
-  width: 100%;
-}
-
-.cherryhub th {
-  height: 50px;
-  padding: 0 10px;
-  color: #ffffff;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 700;
-  background: #AD1457;
-}
-
-.cherryhub tr {
-  border-bottom: solid 1px #E9E9E9;
-}
-
-.cherryhub tr:last-child {
-  border: none;
-}
-
-.cherryhub td {
-  height: 40px;
-  padding: 0 8px;
-}
-
-.cherryhub button {
-  color: #535865;
-}
-
-.cherryhub button:hover {
-  color: #ffffff !important;
-  background: #D81B60 !important;
-}
-
-.cherryhub button:active {
-  color: #ffffff !important;
-  background: #AD1457 !important;
-}
-
-.cp_paginator {
-  list-style: none;
-  padding: 0;
-  margin: 10px;
-  cursor: default;
-}
-
-.cp_paginator li {
-  display: inline-block;
-  color: #8f95a3;
-}
-
-.cp_paginator li.active {
-  color: #535865;
-}
-
-.cp_paginator li.active a {
-  border-bottom-color: #AD1457;
-}
-
-.cp_paginator li a {
-  display: block;
-  height: 35px;
-  width: 35px;
-  text-align: center;
-  line-height: 35px;
-  margin-right: -5px;
-  border-bottom: solid 2px #E9E9E9;
-  color: inherit;
-  text-decoration: none;
-}
-
-.cp_paginator li a:hover {
-  border-bottom-color: #F06292;
-  color: #535865;
-}
-
 .file_seclect {
-  display: inline-block;
-  height: 40px;
-  min-width: 150px;
-  max-width: 200px;
-  border: none;
-  background: #D81B60;
-  color: #ffffff !important;
-  border-radius: 2px;
-  margin-top: 10px;
+  display: block;
+  width: 184.688px;
+  margin: 5px;
+  input {
+    display: none;
+  }
+}
+.change_section {
+  color: @primary_text;
+  font-weight: 700;
+  font-size: 18px;
+  i {
+    font-size: 18px;
+    bottom: 0;
+  }
+}
+/* Login Page */
+.login_page {
   text-align: center;
-  cursor: pointer;
+  background: #ffffff;
+  min-height: 100%;
+  .logo {
+    padding: 24px;
+    img {
+      height: 70px;
+    }
+  }
+  .messagge {
+    padding-bottom: 24px;
+    color: @primary_text;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .form {
+    background: #F7F7F7;
+    width: 354px;
+    margin: 0 auto;
+    padding: 40px 40px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    img {
+      border-radius: 50%;
+      width: 100px;
+      display: inline-block;
+    }
+    #name {
+      padding-top: 2px;
+      color: @primary_text;
+      font-size: 18px;
+    }
+    #email_addr {
+      padding-top: 2px;
+      color: @secondary_text;
+    }
+    .inps {
+      width: 628px;
+    	-webkit-transition: all 0.5s ease;
+      text-align: left;
+      position: absolute;
+      left: 0;
+      &.swap {
+        left: -314px;
+      }
+    }
+    input {
+      margin: 24px 0;
+      margin-left: 40px;
+      padding: 0 8px;
+      height: 44px;
+      font-size: 16px;
+      width: 274px;
+      color: @primary_text;
+      display: inline-block;
+      background: #ffffff;
+      color: @primary_text;
+      float: left;
+      outline: none;
+      border: solid 1px @secondary_text;
+      box-sizing: border-box;
+      &:focus {
+        border: solid 1px @primary_text !important;
+        box-shadow: none;
+      }
+      &:-moz-placeholder {
+        color: #A9A9A9;
+        text-align: center;
+        font-weight: 400;
+      }
+      &::-moz-placeholder {
+        color: #A9A9A9;
+        text-align: center;
+        font-weight: 400;
+      }
+      &::-webkit-input-placeholder {
+        color: #A9A9A9;
+        text-align: center;
+        font-weight: 400;
+      }
+      &:hover.placeholder, &:focus.placeholder {
+        font-weight: 400;
+      }
+      &:hover:-moz-placeholder, &:focus:-moz-placeholder {
+        font-weight: 700;
+      }
+      &:hover::-moz-placeholder, &:focus::-moz-placeholder {
+        font-weight: 400;
+      }
+      &:hover::-webkit-input-placeholder, &:focus::-webkit-input-placeholder {
+        font-weight: 400;
+      }
+    }
+    a {
+      width: 100%;
+      border: none;
+      background: @theme;
+      height: 44px;
+      line-height: 44px;
+      border-radius: 2px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+      display: inline-block;
+      text-decoration: none;
+      cursor: pointer;
+      margin-top: 24px;
+      &:hover {
+        background: darken(@theme, 5%);
+      }
+      &:active {
+        background: darken(@theme, 10%);
+      }
+    }
+  }
+  .return {
+    padding: 24px 0;
+    a {
+      text-decoration: none;
+      color: @secondary_text;
+      cursor: pointer;
+      &:hover {
+        color: @primary_text;
+      }
+      &:active {
+        color: darken(@theme, 30%);
+      }
+    }
+  }
 }
-
-.file_seclect:hover {
-  background: #C2185B;
+#errors {
+  text-align: left;
+  color: #F44336;
+  margin-top: 88px;
+  font-weight: 500;
 }
-
-.file_seclect:active {
-  background: #AD1457;
-}
-
-.file_seclect input {
+#send {
   display: none;
 }
-
-.mess {
-  float: none;
-  margin: 0 auto;
-  padding: 15px;
+p {
+  word-break: normal;
+  word-wrap: break-word;
 }
-
-.mess div {
-  padding: 15px;
-  margin: 0;
-  text-align: center;
+.forms {
+  padding: 24px;
 }
-
-.mess h2 {
-  margin: 0;
-  padding-top: 0;
-  padding-bottom: 15px;
+.add_button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  i {
+    bottom: 0;
+  }
 }
-
-.mess a {
-  display: inline-block;
-  height: 40px;
-  line-height: 40px;
-  min-width: 150px;
-  border: none;
-  background: #D81B60;
-  color: #fff;
-  border-radius: 2px;
-  margin-top: 10px;
-  text-decoration: none !important;
+.savencomm {
+  padding: 24px;
+  .comment {
+    color: @secondary_text;
+  }
+  .save {
+    text-align: right;
+  }
 }
-
-.mess a:hover {
-  background: #C2185B;
-}
-
-.mess a:active {
-  background: #AD1457;
+@media screen and (max-width:991px) {
+  .hide_sm {
+    display: none !important;
+  }
+  .show_sm {
+    display: block !important;
+  }
+  .brand-logo {
+    display: block !important;
+  }
+  #menu_left {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
+    z-index: 999;
+  }
+  .breadcrumbs {
+    padding-left: 10px;
+  }
+  .main_container {
+    margin-left: 0px;
+    padding: 12px;
+  }
+  .menu_list {
+    display: block !important;
+  }
 }

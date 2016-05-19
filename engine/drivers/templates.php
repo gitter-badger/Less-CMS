@@ -71,6 +71,10 @@ class Template
 
 		self::setMember();
 		self::setLang();
+		foreach (engine::mimes() as $key => $value)
+		{
+			self::set('{mime-'.$key.'}', $value);
+		}
 		$this->template = $this->content;
 	}
 
@@ -89,6 +93,7 @@ class Template
 
 	private function setMember()
 	{
+		$GLOBALS['member']->showName = engine::userName($GLOBALS['member']);
 		foreach ($GLOBALS['member'] as $key => $value)
 		{
 			self::set('{member-'.$key.'}', $value);

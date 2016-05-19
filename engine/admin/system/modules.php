@@ -1,47 +1,98 @@
 <?php
 if (!defined('LessCMS-Secure')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php";exit;}
-
-if (!$_POST)
+if($engine->checkPerm("all"))
 {
-  $title = $lang->modules_manager;
-
-  $paginator = "";
-  $end = 10;
-  if(!isset($_GET["page"]) or !is_numeric($_GET["page"])){
-  	$page = 1;
-  }else{
-  	$page = $_GET['page'];
-  }
-  $start = ($page-1) * $end;
-
-  $db->select("extensions");
-  if($db->numRows() > 10)
+  if (!$_POST)
   {
-  	$paginator = $engine->pages($db->numRows(),$page,$end,'/admin.php?system=modules&page=');
-  }
-  $db->free();
+    $title = $lang->modules_manager;
 
-  $db->select("extensions", "", "", "{$start},{$end}");
-  while($row = $db->getObject())
+    $paginator = "";
+    $end = 10;
+    if(!isset($_GET["page"]) or !is_numeric($_GET["page"])){
+    	$page = 1;
+    }else{
+    	$page = $_GET['page'];
+    }
+    $start = ($page-1) * $end;
+
+    $db->select("extensions");
+    if($db->numRows() > 10)
+    {
+    	$paginator = $engine->pages($db->numRows(),$page,$end,'/admin.php?system=modules&page=');
+    }
+    $db->select("extensions", "", "", "{$start},{$end}");
+    while($row = $db->getObject())
+    {
+      $md_list .= '
+        <tr>
+          <td>'.$row->title.'</td>
+          <td class="text-center">'.$row->type.'</td>
+          <td class="text-center">'.$row->version .'</td>
+          <td class="text-right">
+            <a class="waves-effect waves-light btn red" data-id="'.$row->id.'">'.$lang->remove.'</a>
+          </td>
+        </tr>';
+    }
+
+    $tpl->load('modules.tpl');
+    /*Show stats*/
+    $tpl->set("{md_list}", $md_list);
+  	$tpl->set('{paginator}', $paginator);
+    $tpl->compile("content");
+  }
+  else
   {
-    $md_list .= '<tr>
-				<td>'.$row->title.'</td>
-				<td class="text-center">'.$row->type.'</td>
-				<td class="text-center df">'.$row->version .'</td>
-				<td class="text-right" id="buttons_'.$rowID.'"><button type="button" id="remove_md" class="button red" data-id="'.$row->id.'">'.$lang->remove.'</button></td>
-				</tr>';
-  }
+    switch ($_POST['action'])
+    {
+      case 'install_new':
+        $reason = "";
+        $mrk = md5(time());
+        if($_FILES)
+        {
+          $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 
-  $tpl->load('modules.tpl');
-  /*Show stats*/
-  $tpl->set("{md_list}", $md_list);
-	$tpl->set('{paginator}', $paginator);
-  $tpl->compile("content");
+          if(in_array(strtolower($extension), array('zip')))
+          {
+            $filename = $_FILES['file']['name'];
+            if(move_uploaded_file($_FILES['file']['tmp_name'], UPL . "temp/" . $filename))
+            {
+              $engine->unzip(UPL . "/temp/" . $filename, ROOT);
+              if(file_exists(ROOT."/silent_$filename.json"))
+              {
+                $json = json_decode(file_get_contents(ROOT."/silent_$filename.json"));
+                eval($json->silent);
+              }
+            }
+            else
+            {
+              echo '{"error":true,"reason":"'.$lang->fue.'"}';
+            }
+            unlink($_FILES['file']['tmp_name']);
+            unlink(UPL . "/temp/" . $filename);
+              echo '{"success":true}';
+          }
+          else
+          {
+            echo '{"error":true,"reason":"'.$lang->ena.': '.$extension.'"}';
+          }
+        }
+      break;
+
+      case 'remove_md':
+        $db->select("extensions","id='".$_POST['id']."'");
+        $row = $db->getObject();
+        $db->delete("extensions","id='".$_POST['id']."'");
+        $json = json_decode(file_get_contents(ADMIN."uninstall/".$row->link.".php"));
+        foreach ($json as $v)
+        {
+          unlink(ROOT.$v);
+        }
+      break;
+    }
+  }
 }
 else
 {
-  if ($_POST['action'] == "remove_md")
-  {
-    $db->delete("extensions","id='".$_POST['id']."'");
-  }
+	$title = $lang->perm_denied;
+	$core->mess($lang->perm_denied, $lang->perm_denied_m,"/admin.php");
 }

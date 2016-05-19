@@ -6,6 +6,44 @@ $module = "";
 
 include_once (ENGINE  . "engine.php");
 
+$diff = time() - $_SESSION['last_updcheck'];
+if($diff >= 3600)
+{
+	$_SESSION['last_updcheck'] = time();
+	unset($_SESSION['upd_av']);
+  $request = $connect->api();
+	if($request->version > $config->version)
+	{
+		$_SESSION['upd_av'] = $request->version;
+		$dashboard .= '
+		  <div class="col s12">
+		    <div class="col-md-12 tile notif"><i class="mi">system_update_alt</i>'.$lang->update_available.' '.$request->version.' <a href="?system=status">'.$lang->update.'</a></div>
+		  </div>';
+	}
+}
+elseif(isset($_SESSION['upd_av']))
+{
+	if($_SESSION['upd_av'] > $config->version)
+	{
+		$dashboard .= '
+		  <div class="col s12">
+		    <div class="col-md-12 tile notif"><i class="mi">system_update_alt</i>'.$lang->update_available.' '.$_SESSION['upd_av'].' <a href="?system=sys_status">'.$lang->update.'</a></div>
+		  </div>';
+	}
+}
+if(!empty($_GET))
+{
+	$breadcrumbs = '
+	<nav class="breadcrumbs hide_sm">
+	  <div class="nav-wrapper">
+	    <div class="col s12">
+			<a href="/admin.php" class="breadcrumb">'.$lang->home.'</a>
+	      '.$engine->bc().'
+	    </div>
+	  </div>
+	</nav>';
+}
+
 if(isset($_GET['setLang']))
 {
 	if(!empty($_GET['backLink']))
@@ -51,13 +89,13 @@ else
 
 			default:
 
-				$module = $db->real_escape_string($_GET['do']);
-				$db->select("extensions", "link = '{$db->real_escape_string($_GET['do'])}' AND public = '1' ");
+				$module = $_GET['do'];
+				$db->select("extensions", "link = '{$_GET['do']}' AND public = '1' ");
 
 				if($db->numRows())
 				{
 					$row = $db->getObject();
-					$db->free();
+					
 					if(include ADMIN . "modules/{$row->link}.php")
 					{
 						$site_title = $title . ' - ' . $config->title;
@@ -90,9 +128,9 @@ else
 
 			break;
 
-			case 'status':
+			case 'sys_status':
 
-				$module = "status";
+				$module = "sys_status";
 				include ENGINE . "/admin/system/status.php";
 				$site_title = $title . ' - ' . $config->title;
 
@@ -121,8 +159,8 @@ while ($md = $db->getObject())
 {
 	$t = $md->link;
 	if($module == $md->link)
-		$main_modules .= '<li class="active"><a href="?do='.$md->link.'"><i class="mi">label</i>'.$lang->$t.'</a></li>';
+		$main_modules .= '<li class="active"><a href="?do='.$md->link.'">'.$lang->$t.'</a></li>';
 	else
-		$main_modules .= '<li><a href="?do='.$md->link.'"><i class="mi">label</i>'.$lang->$t.'</a></li>';
+		$main_modules .= '<li><a href="?do='.$md->link.'">'.$lang->$t.'</a></li>';
 }
 ?>

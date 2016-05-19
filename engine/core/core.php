@@ -11,11 +11,6 @@ class Core
     echo "Function '$name' with parameters '" . implode(', ', $arguments). "' not found\n";
   }
 
-  function __construct()
-  {
-
-  }
-
   protected function getDatabases()
   {
     $dbs= new stdClass();

@@ -1,40 +1,27 @@
-<div class="col-md-8 npad">
-	<div class="tiles">
-		<div class="changelog_header">
-			<h2>{lang-local_stats}</h2>
-			<small>{lang-local_stats_descr}</small>
-		</div>
-		<table class="table table-hover middle systate_tbl">
-		 <tbody>
-			 <tr>
- 		   <td style="width:150px;">{lang-engine_version}: </td>
- 		   <td id="version">{version} {button}</td>
- 		  </tr>
- 		  <tr>
- 		   <td>{lang-os}:</td>
- 		   <td title="{php_os_name}">{php_os}</td>
- 		  </tr>
- 		  <tr>
- 		   <td>{lang-version} PHP:</td>
- 		   <td>{php_version}</td>
- 		  </tr>
- 		  <tr>
- 		   <td>{lang-version} MySQLi:</td>
- 		   <td>{mysql_version}</td>
- 		  </tr>
-		 </tbody>
-		</table>
-	</div>
-</div>
-
-<div class="col-md-4">
-		<div class="tiles">
-			<div class="changelog_header">
-				<h2>{lang-changelog}</h2>
-				<small>{change_log_descr}</small>
+<div class="row">
+	<div class="col s12 m6">
+			<div class="card">
+				<div class="card-content">
+					<h4>{lang-local_stats}</h4>
+					<div class="sp_row {vst}"><i class="mi">memory</i> <b>{lang-engine_version}:</b> <span id="verison">{version}</span></div>
+					<div class="sp_row"><i class="mi">next_week</i> <b>{lang-os}:</b> <span title="{php_os_name}">{php_os}</span></div>
+					<div class="sp_row"><i class="mi">settings</i> <b>{lang-version} PHP:</b> <span>{php_version}</span></div>
+					<div class="sp_row {curl_err}"><i class="mi">extension</i> <b>cURL:</b> <span>{curl_st}</span></div>
+				</div>
 			</div>
-			<div class="changelog">
-				{change_log}
+		</div>
+		<div class="col s12 m5 chlog">
+			<div class="card">
+				<div class="card-head light-green lighten-1">
+					<div class="white-text">{version_inform}</div>
+					{upd_btn}
+				</div>
+				<div class="changelog">
+					<h5>{lang-changelog}</h5>
+					<div class="changelist">
+						{change_log}
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
