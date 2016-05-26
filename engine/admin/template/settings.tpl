@@ -28,14 +28,21 @@
               <label>{lang-database}</label>
               <select name="config[database]">
                 <option value="" disabled selected>{lang-choose_db}</option>
-              {cf_database_list}
+                {cf_database_list}
               </select>
             </div>
             <div>
               <label>{lang-template}</label>
               <select name="config[template]">
                 <option value="" disabled selected>{lang-choose_tpl}</option>
-              {cf_templates_list}
+                {cf_templates_list}
+              </select>
+            </div>
+            <div>
+              <label>{lang-timezone}</label>
+              <select name="config[timezone]">
+                <option value="" disabled selected>{lang-timezone}</option>
+                {cf_timezones}
               </select>
             </div>
             <p class="swinp">
