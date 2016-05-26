@@ -22,7 +22,6 @@ define('DRIVERS', ENGINE . 'drivers/');
 define('MODULES', ADMIN . 'modules/');
 define('EXT', ADMIN . 'extensions/');
 define('UPL', ROOT . 'uploads/');
-date_default_timezone_set("Europe/Berlin");
 if(!file_exists(ROOT."engine/configs/config.json") || !file_exists(ROOT."engine/configs/drivers/MySql.json"))
  header("Location: /install/install.php");
 session_start();
@@ -31,6 +30,7 @@ $siteTitle = '';
 $main_modules = '';
 $syserr = false;
 include ADMIN . "init.php";
+date_default_timezone_set($config->timezone);
 $idmember = $_SESSION['member_id'];
 $logged   = $_SESSION['logged'];
 $_GET = $engine->clean($_GET);
