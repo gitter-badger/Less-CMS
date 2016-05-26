@@ -9,7 +9,6 @@ else
   @error_reporting(E_ALL ^ E_WARNING ^ E_DEPRECATED ^ E_NOTICE);
   @ini_set('error_reporting', E_ALL ^ E_WARNING ^ E_DEPRECATED ^ E_NOTICE);
 }
-
 $meta = "";
 @ini_set('display_errors', true);
 @ini_set('html_errors', false);
@@ -21,13 +20,13 @@ define('CONFIG', ENGINE . 'configs/');
 define('CORE', ENGINE . 'core/');
 define('DRIVERS', ENGINE . 'drivers/');
 define('UPL', ROOT . 'uploads/');
-date_default_timezone_set("Europe/Berlin");
 session_start();
 if(!file_exists(ROOT."engine/configs/config.json") || !file_exists(ROOT."engine/configs/drivers/MySql.json"))
  header("Location: /install/install.php");
 $exts = new stdClass();
 $scontent = "";
 include_once ENGINE . "init.php";
+date_default_timezone_set($config->timezone);
 $idmember = $_SESSION['member_id'];
 $logged   = $_SESSION['logged'];
 $meta .= $md_meta;
