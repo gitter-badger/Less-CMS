@@ -250,9 +250,11 @@
 
   "install_mdmess" : "You can install new modules by using this form. Modules from N3stY have a function \"silent install\" and will be installed on their own without any additional dances with a tambourine :)",
 
-  "choose_db" : "Select database",
+  "choose_db" : "Database",
 
-  "choose_tpl" : "Select template",
+  "choose_tpl" : "Template",
+
+  "timezone" : "Timezone",
 
   "saved" : "Saved!",
 
