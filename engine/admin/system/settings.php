@@ -43,6 +43,25 @@ if($engine->checkPerm("all"))
       }
     }
     /* Databases END */
+    /* Timezones */
+    foreach(DateTimeZone::listIdentifiers() as $key => $value)
+    {
+      if(!$config->timezone)
+      {
+        if($key == 0)
+          $cf_timezones .= '<option value="'.$key.'" selected>'.$value.'</option>';
+        else
+          $cf_timezones .= '<option value="'.$key.'">'.$value.'</option>';
+      }
+      else
+      {
+        if($config->timezone == $value)
+          $cf_timezones .= '<option value="'.$key.'" selected>'.$value.'</option>';
+        else
+          $cf_timezones .= '<option value="'.$key.'">'.$value.'</option>';
+      }
+    }
+    /* Timezones END */
 
     if(!$settings_modules)
      $md_tab = "disabled";
@@ -119,7 +138,8 @@ if($engine->checkPerm("all"))
     $tpl->set("{cf_domain}",           $config->domain);
     $tpl->set("{cf_lkey}",             $config->lkey);
     $tpl->set("{cf_templates_list}",   $tList);
-    $tpl->set("{cf_database_list}",   $cf_database_list);
+    $tpl->set("{cf_database_list}",    $cf_database_list);
+    $tpl->set("{cf_timezones}",        $cf_timezones);
     $tpl->set("{captcha_pkey}",        $config->p_key);
     $tpl->set("{captcha_skey}",        $config->s_key);
     $tpl->set("{smtp_host}",           $config->smtp_host);
@@ -140,10 +160,10 @@ if($engine->checkPerm("all"))
   }
   elseif (isset($_POST['config']))
   {
-    $_POST['config'] = $engine->clean($_POST['config']);
-    $handler = @fopen(CONFIG . "config.json", "w");
-    $_POST['config']['version'] = $config->version;
+    $handler                       = @fopen(CONFIG . "config.json", "w");
+    $_POST['config']['version']    = $config->version;
     $_POST['config']['secure_key'] = $config->secure_key;
+    $_POST['config']['timezone']   = DateTimeZone::listIdentifiers()[$_POST['config']['timezone']];
     if($config->compcfg) fwrite($handler, json_encode($_POST['config']));
     else fwrite($handler, json_encode($_POST['config'],JSON_PRETTY_PRINT));
     fclose($handler);
