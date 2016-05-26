@@ -3,6 +3,7 @@
 ###Changelog
 New in 0.6.0 BETA1:
 * Set engine timezone
+
 #####Less CMS
 * [26.05.2016] v0.6.0 - Released [BETA1]
 * [13.05.2016] v0.6.0 - Released [BETA]
