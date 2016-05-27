@@ -1,30 +1,101 @@
-RewriteEngine on
-
-RewriteBase /
-
 Options All -ExecCGI -Indexes -Includes +FollowSymLinks
+DirectoryIndex index.php
 
-ErrorDocument 403 /undefined
+ServerSignature Off
+AddDefaultCharset UTF-8
 
-ErrorDocument 404 /undefined
+AddHandler cgi-script .pl .py .jsp .asp .htm .shtml .sh .cgi
+AddType application/x-javascript .js
+AddType text/css .css
+AddType text/xml .xml
+AddType application/octet-stream .doc .mov .avi .pdf .xls
 
+<ifModule mod_php.c>
+  php_value	upload_max_filesize	32M
+  php_value	post_max_size		10M
+  php_value	default_charset utf-8
+  php_value	max_execution_time 200
+</ifModule>
 
-RewriteRule ^registration(/?)$ index.php?do=membership&case=registration [L]
+<ifModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
+</ifModule>
 
-# Without slash
-RewriteRule ^([^.]+)/([^.]+)/([^.]+)/([0-9]+)(/?)$ index.php?do=$1&case=$2&su=$3&page=$4 [L]
-RewriteRule ^([^.]+)/([^.]+)/([0-9]+)(/?)$ index.php?do=$1&case=$2&page=$3 [L]
-RewriteRule ^([^.]+)/([0-9]+)/([^.]+)(/?)$ index.php?do=$1&page=$2&su=$3 [L]
-RewriteRule ^([^.]+)/([^.]+)/([^.]+)(/?)$ index.php?do=$1&case=$2&su=$3 [L]
-RewriteRule ^([^.]+)/([0-9]+)(/?)$ index.php?do=$1&page=$2 [L]
-RewriteRule ^([^.]+)/([^.]+)(/?)$ index.php?do=$1&case=$2 [L]
-RewriteRule ^([^.]+)(/?)$ index.php?do=$1 [L]
+<IfModule mod_gzip.c>
+	mod_gzip_on         Yes
+	mod_gzip_dechunk    Yes
+	mod_gzip_item_include file		\.(html?|txt|css|js|php|pl)$
+	mod_gzip_item_include mime		^text\.*
+	mod_gzip_item_include mime		^application/x-javascript.*
+	mod_gzip_item_exclude mime		^image\.*
+	mod_gzip_item_exclude rspheader	^Content-Encoding:.*gzip.*
+</IfModule>
 
-# With slash
-RewriteRule ^([^.]+)/([^.]+)/([^.]+)/([0-9]+)/(/?)$ index.php?do=$1&case=$2&su=$3&page=$4 [L]
-RewriteRule ^([^.]+)/([^.]+)/([0-9]+)/(/?)$ index.php?do=$1&case=$2&page=$3 [L]
-RewriteRule ^([^.]+)/([0-9]+)/([^.]+)/(/?)$ index.php?do=$1&page=$2&su=$3 [L]
-RewriteRule ^([^.]+)/([^.]+)/([^.]+)/(/?)$ index.php?do=$1&case=$2&su=$3 [L]
-RewriteRule ^([^.]+)/([0-9]+)/(/?)$ index.php?do=$1&page=$2 [L]
-RewriteRule ^([^.]+)/([^.]+)/(/?)$ index.php?do=$1&case=$2 [L]
-RewriteRule ^([^.]+)/(/?)$ index.php?do=$1 [L]
+<ifModule mod_headers.c>
+	<FilesMatch "\.(html|htm)$">
+		Header set Cache-Control "max-age=43200"
+	</FilesMatch>
+	<FilesMatch "\.(js|css|txt)$">
+		Header set Cache-Control "max-age=604800"
+	</FilesMatch>
+	<FilesMatch "\.(flv|swf|ico|gif|jpg|jpeg|png)$">
+		Header set Cache-Control "max-age=2592000"
+	</FilesMatch>
+	<FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi)$">
+		Header unset Cache-Control
+	</FilesMatch>
+</IfModule>
+
+<ifModule mod_expires.c>
+	ExpiresActive On
+	ExpiresDefault "access plus 5 seconds"
+	ExpiresByType image/x-icon "access plus 2592000 seconds"
+	ExpiresByType image/jpeg "access plus 2592000 seconds"
+	ExpiresByType image/png "access plus 2592000 seconds"
+	ExpiresByType image/gif "access plus 2592000 seconds"
+	ExpiresByType application/x-shockwave-flash "access plus 2592000 seconds"
+	ExpiresByType text/css "access plus 604800 seconds"
+	ExpiresByType text/javascript "access plus 604800 seconds"
+	ExpiresByType application/javascript "access plus 604800 seconds"
+	ExpiresByType application/x-javascript "access plus 604800 seconds"
+	ExpiresByType text/html "access plus 43200 seconds"
+	ExpiresByType application/xhtml+xml "access plus 600 seconds"
+</ifModule>
+
+# Bad Rquest
+ErrorDocument 400 /error.php?400
+ErrorDocument 401 /error.php?401
+ErrorDocument 403 /error.php?403
+ErrorDocument 404 /error.php?404
+ErrorDocument 405 /error.php?405
+ErrorDocument 408 /error.php?408
+ErrorDocument 414 /error.php?414
+ErrorDocument 500 /error.php?500
+ErrorDocument 501 /error.php?501
+ErrorDocument 502 /error.php?502
+ErrorDocument 503 /error.php?503
+ErrorDocument 504 /error.php?504
+
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteBase /
+  # Without slash
+  RewriteRule ^registration(/?)$ index.php?do=membership&case=registration [L]
+  RewriteRule ^([^.]+)/([^.]+)/([^.]+)/([0-9]+)(/?)$ index.php?do=$1&case=$2&su=$3&page=$4 [L]
+  RewriteRule ^([^.]+)/([^.]+)/([0-9]+)(/?)$ index.php?do=$1&case=$2&page=$3 [L]
+  RewriteRule ^([^.]+)/([0-9]+)/([^.]+)(/?)$ index.php?do=$1&page=$2&su=$3 [L]
+  RewriteRule ^([^.]+)/([^.]+)/([^.]+)(/?)$ index.php?do=$1&case=$2&su=$3 [L]
+  RewriteRule ^([^.]+)/([0-9]+)(/?)$ index.php?do=$1&page=$2 [L]
+  RewriteRule ^([^.]+)/([^.]+)(/?)$ index.php?do=$1&case=$2 [L]
+  RewriteRule ^([^.]+)(/?)$ index.php?do=$1 [L]
+
+  # With slash
+  RewriteRule ^registration/(/?)$ index.php?do=membership&case=registration [L]
+  RewriteRule ^([^.]+)/([^.]+)/([^.]+)/([0-9]+)/(/?)$ index.php?do=$1&case=$2&su=$3&page=$4 [L]
+  RewriteRule ^([^.]+)/([^.]+)/([0-9]+)/(/?)$ index.php?do=$1&case=$2&page=$3 [L]
+  RewriteRule ^([^.]+)/([0-9]+)/([^.]+)/(/?)$ index.php?do=$1&page=$2&su=$3 [L]
+  RewriteRule ^([^.]+)/([^.]+)/([^.]+)/(/?)$ index.php?do=$1&case=$2&su=$3 [L]
+  RewriteRule ^([^.]+)/([0-9]+)/(/?)$ index.php?do=$1&page=$2 [L]
+  RewriteRule ^([^.]+)/([^.]+)/(/?)$ index.php?do=$1&case=$2 [L]
+  RewriteRule ^([^.]+)/(/?)$ index.php?do=$1 [L]
+</IfModule>
