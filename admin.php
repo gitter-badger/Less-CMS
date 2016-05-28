@@ -30,7 +30,6 @@ $siteTitle = '';
 $main_modules = '';
 $syserr = false;
 include ADMIN . "init.php";
-date_default_timezone_set($config->timezone);
 $idmember = $_SESSION['member_id'];
 $logged   = $_SESSION['logged'];
 $_GET = $engine->clean($_GET);

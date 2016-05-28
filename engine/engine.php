@@ -280,6 +280,7 @@ $language = new Language();
 $lang     = $language->langPack();
 $tpl      = new Template();
 if($config->status_captcha) $recaptcha = new \ReCaptcha\ReCaptcha($config->s_key);
+date_default_timezone_set($config->timezone);
 
 include_once (ENGINE . "extensions/autoload.php");
 ?>

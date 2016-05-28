@@ -26,7 +26,6 @@ if(!file_exists(ROOT."engine/configs/config.json") || !file_exists(ROOT."engine/
 $exts = new stdClass();
 $scontent = "";
 include_once ENGINE . "init.php";
-date_default_timezone_set($config->timezone);
 $idmember = $_SESSION['member_id'];
 $logged   = $_SESSION['logged'];
 $meta .= $md_meta;
