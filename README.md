@@ -1,7 +1,7 @@
 <a href="http://www.n3sty.com" title="Go to N3stY site"><img src="https://pp.vk.me/c631627/v631627092/26f5b/qXNoK9nz2eQ.jpg"></a>
 <a href="http://www.n3sty.com/download/less_cms/d1">Get it now</a><br><br>
 <a href="http://less.n3sty.com/">Demo</a><br>
-<a href="http://less.n3sty.com/">Demo admin panel</a><br>
+<a href="http://less.n3sty.com/admin.php">Demo admin panel</a><br>
 Email(login): demo&#64;demo.xyz<br>
 Password: demo<br>
 
