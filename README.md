@@ -12,6 +12,7 @@ New in 0.6.0 BETA1:
 * Set engine timezone
 * .htaccess updated - Added compression and caching
 * Added access permission
+* Fixed some bugs
 
 #####Less CMS
 * [02.06.2016] v0.6.0 - Updated  [BETA1]
