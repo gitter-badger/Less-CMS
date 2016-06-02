@@ -5,7 +5,8 @@
 Email(login): demo&#64;demo.xyz<br>
 Password: demo<br>
 
-<br><br>
+Less CMS tested on PHP 7 (7.0.6) works stable.
+<br>
 ###Changelog
 New in 0.6.0 BETA1:
 * Set engine timezone
