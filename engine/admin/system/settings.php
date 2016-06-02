@@ -1,6 +1,6 @@
 <?php
 if (!defined('LessCMS-Secure')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php";exit;}
-if($engine->checkPerm("all"))
+if($engine->checkPerm("settings"))
 {
   $additional_settings = "";
   $additional_security = "";
@@ -160,14 +160,21 @@ if($engine->checkPerm("all"))
   }
   elseif (isset($_POST['config']))
   {
-    $handler                       = @fopen(CONFIG . "config.json", "w");
-    $_POST['config']['version']    = $config->version;
-    $_POST['config']['secure_key'] = $config->secure_key;
-    $_POST['config']['timezone']   = DateTimeZone::listIdentifiers()[$_POST['config']['timezone']];
-    if($config->compcfg) fwrite($handler, json_encode($_POST['config']));
-    else fwrite($handler, json_encode($_POST['config'],JSON_PRETTY_PRINT));
-    fclose($handler);
-    echo '{"success":true}';
+    if($engine->checkPerm("settings_update"))
+    {
+      $handler                       = @fopen(CONFIG . "config.json", "w");
+      $_POST['config']['version']    = $config->version;
+      $_POST['config']['secure_key'] = $config->secure_key;
+      $_POST['config']['timezone']   = DateTimeZone::listIdentifiers()[$_POST['config']['timezone']];
+      if($config->compcfg) fwrite($handler, json_encode($_POST['config']));
+      else fwrite($handler, json_encode($_POST['config'],JSON_PRETTY_PRINT));
+      fclose($handler);
+      echo '{"success":true}';
+    }
+    else
+    {
+      echo '{"success":false, "reason":"'.$lang->perm_denied.'"}';
+    }
   }
   else
   {
@@ -176,5 +183,6 @@ if($engine->checkPerm("all"))
 }
 else
 {
-  echo '{"success":false, "reason":"'.$lang->perm_denied_m.'"}';
+	$title = $lang->perm_denied;
+	$core->mess($lang->perm_denied, $lang->perm_denied_m,"/admin.php");
 }

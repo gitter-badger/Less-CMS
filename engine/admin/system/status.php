@@ -1,6 +1,6 @@
 <?php
 if (!defined('LessCMS-Secure')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php";exit;}
-if($engine->checkPerm())
+if($engine->checkPerm("status"))
 {
   if (!$_POST)
   {
@@ -25,8 +25,11 @@ if($engine->checkPerm())
       elseif ($request->version > $config->version)
       {
         $version_inform = "$lang->update_available $request->version";
-        $upd_btn = '<a class="btn-floating btn-large waves-effect waves-light light-green right"><i class="mi">system_update_alt</i></a>';
-        $vst = "warning";
+        if($engine->checkPerm("update_engine"))
+        {
+          $upd_btn = '<a class="btn-floating btn-large waves-effect waves-light light-green right"><i class="mi">system_update_alt</i></a>';
+          $vst = "warning";
+        }
       }
       else
       {

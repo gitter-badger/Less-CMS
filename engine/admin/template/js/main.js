@@ -167,8 +167,12 @@ $("body").on("click", "#jsave", function()
   });
 	if(form.attr("files"))
 	{
-		var files = $("input[file]")[0].files[0];
-		fData.append("file", files);
+		var inp = $('input[type="file"]');
+		if(inp[0].files[0])
+		{
+			var files = inp.files[0];
+			fData.append("file", files);
+		}
 	}
 	$.ajax({
 	  url: "",
@@ -224,6 +228,28 @@ function installExt()
 			else
 			{
 				subm.removeAttr("disabled");
+				Materialize.toast(lang.proc_error+": "+json.reason, 3000);
+			}
+		}
+	});
+};
+function removeExt(id)
+{
+	$.ajax({
+	  url: "",
+	  type: 'POST',
+		data: {"id":id,"action":"remove_md","AJAX":true},
+	  async: false,
+	  cache: false,
+		success: function(html)
+		{
+			json = $.parseJSON(html);
+			if(json.success)
+			{
+				Materialize.toast(lang.removed, 3000);
+			}
+			else
+			{
 				Materialize.toast(lang.proc_error+": "+json.reason, 3000);
 			}
 		}

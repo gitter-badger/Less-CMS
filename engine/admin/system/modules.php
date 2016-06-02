@@ -1,6 +1,6 @@
 <?php
 if (!defined('LessCMS-Secure')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/errors.php";exit;}
-if($engine->checkPerm("all"))
+if($engine->checkPerm("modules"))
 {
   if (!$_POST)
   {
@@ -29,7 +29,7 @@ if($engine->checkPerm("all"))
           <td class="text-center">'.$row->type.'</td>
           <td class="text-center">'.$row->version .'</td>
           <td class="text-right">
-            <a class="waves-effect waves-light btn red" data-id="'.$row->id.'">'.$lang->remove.'</a>
+            <a class="waves-effect waves-light btn red" onClick="removeExt(\''.$row->id.'\');">'.$lang->remove.'</a>
           </td>
         </tr>';
     }
@@ -45,47 +45,61 @@ if($engine->checkPerm("all"))
     switch ($_POST['action'])
     {
       case 'install_new':
-        $reason = "";
-        $mrk = md5(time());
-        if($_FILES)
+        if($engine->checkPerm("modules_install"))
         {
-          $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-
-          if(in_array(strtolower($extension), array('zip')))
+          $reason = "";
+          $mrk = md5(time());
+          if($_FILES)
           {
-            $filename = $_FILES['file']['name'];
-            if(move_uploaded_file($_FILES['file']['tmp_name'], UPL . "temp/" . $filename))
+            $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+
+            if(in_array(strtolower($extension), array('zip')))
             {
-              $engine->unzip(UPL . "/temp/" . $filename, ROOT);
-              if(file_exists(ROOT."/silent_$filename.json"))
+              $filename = $_FILES['file']['name'];
+              if(move_uploaded_file($_FILES['file']['tmp_name'], UPL . "temp/" . $filename))
               {
-                $json = json_decode(file_get_contents(ROOT."/silent_$filename.json"));
-                eval($json->silent);
+                $engine->unzip(UPL . "/temp/" . $filename, ROOT);
+                if(file_exists(ROOT."/silent_$filename.json"))
+                {
+                  $json = json_decode(file_get_contents(ROOT."/silent_$filename.json"));
+                  eval($json->silent);
+                }
               }
+              else
+              {
+                echo '{"error":true,"reason":"'.$lang->fue.'"}';
+              }
+              unlink($_FILES['file']['tmp_name']);
+              unlink(UPL . "/temp/" . $filename);
+                echo '{"success":true}';
             }
             else
             {
-              echo '{"error":true,"reason":"'.$lang->fue.'"}';
+              echo '{"error":true,"reason":"'.$lang->ena.': '.$extension.'"}';
             }
-            unlink($_FILES['file']['tmp_name']);
-            unlink(UPL . "/temp/" . $filename);
-              echo '{"success":true}';
           }
-          else
-          {
-            echo '{"error":true,"reason":"'.$lang->ena.': '.$extension.'"}';
-          }
+        }
+        else
+        {
+          echo '{"success":false, "reason":"'.$lang->perm_denied.'"}';
         }
       break;
 
       case 'remove_md':
-        $db->select("extensions","id='".$_POST['id']."'");
-        $row = $db->getObject();
-        $db->delete("extensions","id='".$_POST['id']."'");
-        $json = json_decode(file_get_contents(ADMIN."uninstall/".$row->link.".php"));
-        foreach ($json as $v)
+        if($engine->checkPerm("modules_remove"))
         {
-          unlink(ROOT.$v);
+          $db->select("extensions","id='".$_POST['id']."'");
+          $row = $db->getObject();
+          $db->delete("extensions","id='".$_POST['id']."'");
+          $json = json_decode(file_get_contents(ADMIN."uninstall/".$row->link.".php"));
+          foreach ($json as $v)
+          {
+            unlink(ROOT.$v);
+          }
+        }
+        else
+        {
+          echo '{"success":false, "reason":"'.$lang->perm_denied.'"}';
         }
       break;
     }

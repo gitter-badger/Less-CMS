@@ -158,14 +158,15 @@ class Engine extends Core
     $temp = substr($str, 0, $length);
     return substr($temp, 0, strrpos($temp, ' ') ) . $postfix;
   }
-  public function checkPerm($param)
+  public function checkPerm($section)
   {
+    if(is_array($section) || is_object($section)) return false;
     $db = $GLOBALS['db'];
     $db->select("members", "id='".$_SESSION['member_id']."'","","","group_id");
     $gid = $db->getObject()->group_id;
     $db->select("member_groups", "id='{$gid}'");
     $dids = explode(";", $db->getObject()->perms);
-    if(in_array($param, $dids) || in_array("supersu", $dids)) return true;
+    if(in_array($section, $dids) || in_array("supersu", $dids)) return true;
     return false;
   }
   public function intSub($value=0)

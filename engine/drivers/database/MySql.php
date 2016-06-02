@@ -10,7 +10,7 @@ if (!defined('LessCMS-Secure')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/err
    var $request;
    var $numRows;
 
-   public function __construct($config="MySql")
+   public function __construct($config="MySQL")
    {
      $this->status = new stdClass();
      $this->status->config = "ERROR";
@@ -24,7 +24,7 @@ if (!defined('LessCMS-Secure')){require $_SERVER['DOCUMENT_ROOT'] . "/engine/err
      $this->status->connection = "OK";
      try
      {
-       $this->conn = new PDO("mysql:dbname={$conf->table};host=".$conf->host ?: "localhost;charset=utf8", $conf->user ?: "root", $conf->password);
+       $this->conn = new PDO("mysql:dbname={$conf->table};host=".$conf->host ?: "localhost;charset=utf8", $conf->user ?: "root", $conf->password ?: "");
        $this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
        $this->conn->exec("SET NAMES 'utf8'");
