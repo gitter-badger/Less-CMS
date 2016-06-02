@@ -22,7 +22,7 @@ define('DRIVERS', ENGINE . 'drivers/');
 define('MODULES', ADMIN . 'modules/');
 define('EXT', ADMIN . 'extensions/');
 define('UPL', ROOT . 'uploads/');
-if(!file_exists(ROOT."engine/configs/config.json") || !file_exists(ROOT."engine/configs/drivers/MySql.json"))
+if(!file_exists(ROOT."engine/configs/config.json") || !file_exists(ROOT."engine/configs/drivers/MySQL.json"))
  header("Location: /install/install.php");
 session_start();
 $dashboard = '';
@@ -37,7 +37,7 @@ include_once ADMIN."extensions/autoload.php";
 
 if(!$_SESSION['logged'])
 {
-  if(!$_POST['AJAX'] && $_GET['do'] != "signin")
+  if(!isset($_POST['AJAX']) && $_GET['do'] != "signin")
   {
     $tpl->load('login.tpl');
 
@@ -70,7 +70,7 @@ if(!$_SESSION['logged'])
     $tpl->compile('main');
     echo $tpl->result['main'];
   }
-  elseif (!$_POST['AJAX'] && $_GET['do'] == "signin")
+  elseif (!isset($_POST['AJAX']) && $_GET['do'] == "signin")
   {
     header("Location: /admin.php");
   }
@@ -89,9 +89,9 @@ if(!$_SESSION['logged'])
 }
 else
 {
-  if($engine->checkPerm(array("all","moder")))
+  if($engine->checkPerm("adminpanel"))
   {
-    if(!$_POST['AJAX'])
+    if(!isset($_POST['AJAX']))
     {
       $tpl->load('main.tpl');
 

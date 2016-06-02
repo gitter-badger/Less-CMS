@@ -21,7 +21,7 @@ define('CORE', ENGINE . 'core/');
 define('DRIVERS', ENGINE . 'drivers/');
 define('UPL', ROOT . 'uploads/');
 session_start();
-if(!file_exists(ROOT."engine/configs/config.json") || !file_exists(ROOT."engine/configs/drivers/MySql.json"))
+if(!file_exists(ROOT."engine/configs/config.json") || !file_exists(ROOT."engine/configs/drivers/MySQL.json"))
  header("Location: /install/install.php");
 $exts = new stdClass();
 $scontent = "";
@@ -30,7 +30,7 @@ $idmember = $_SESSION['member_id'];
 $logged   = $_SESSION['logged'];
 $meta .= $md_meta;
 
-if(!$_POST['AJAX'])
+if(!isset($_POST['AJAX']))
 {
   if(!$config->offline)
   {
