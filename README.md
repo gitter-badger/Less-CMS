@@ -8,6 +8,8 @@ Password: demo<br>
 Less CMS tested on PHP 7 (7.0.6) works stable.
 <br>
 ###Changelog
+
+[![Join the chat at https://gitter.im/N3stY/Less-CMS](https://badges.gitter.im/N3stY/Less-CMS.svg)](https://gitter.im/N3stY/Less-CMS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 New in 0.6.0 BETA1:
 * Set engine timezone
 * .htaccess updated - Added compression and caching
